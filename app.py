@@ -70,8 +70,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     else:
         message = ImageSendMessage(
-            original_content_url="http://2.bp.blogspot.com/-bCZw9rQX0dQ/VIK9gvARTBI/AAAAAAAADio/7tiLmJ-saVg/s1600/T%E6%AF%9B.jpg",
-            preview_image_url="http://2.bp.blogspot.com/-bCZw9rQX0dQ/VIK9gvARTBI/AAAAAAAADio/7tiLmJ-saVg/s1600/T%E6%AF%9B.jpg"
+            original_content_url="https://i2.kknews.cc/0pmkcgpLomkXFM0l3HZChgGJ2sRhmii-4CSSJTM/0.jpg",
+            preview_image_url="https://i2.kknews.cc/0pmkcgpLomkXFM0l3HZChgGJ2sRhmii-4CSSJTM/0.jpg"
             
         )
         #TextSendMessage:傳送文字訊息     
