@@ -1,3 +1,4 @@
+from pyparsing import originalTextFor
 from flask import Flask, request, abort
 
 from linebot import (
@@ -48,7 +49,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = event.message.text
+    msg = event.message.text   #讀取使用者輸入的訊息
     if '最新合作廠商' in msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
@@ -68,7 +69,14 @@ def handle_message(event):
         message = function_list()
         line_bot_api.reply_message(event.reply_token, message)
     else:
-        message = TextSendMessage(text=msg)     #說一樣的話
+        message = ImageSendMessage(
+            original_content_url="http://2.bp.blogspot.com/-bCZw9rQX0dQ/VIK9gvARTBI/AAAAAAAADio/7tiLmJ-saVg/s1600/T%E6%AF%9B.jpg",
+            preview_image_url="http://2.bp.blogspot.com/-bCZw9rQX0dQ/VIK9gvARTBI/AAAAAAAADio/7tiLmJ-saVg/s1600/T%E6%AF%9B.jpg"
+            
+        )
+        #TextSendMessage:傳送文字訊息     
+        #ImageSendMessage:傳送圖片
+        
         line_bot_api.reply_message(event.reply_token, message)
 
 @handler.add(PostbackEvent)
