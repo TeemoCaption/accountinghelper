@@ -9,7 +9,6 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-
 #======這裡是呼叫的檔案內容=====
 from message import *
 from new import *
@@ -72,7 +71,6 @@ def handle_message(event):
         message = ImageSendMessage(
             original_content_url="https://i2.kknews.cc/0pmkcgpLomkXFM0l3HZChgGJ2sRhmii-4CSSJTM/0.jpg",
             preview_image_url="https://i2.kknews.cc/0pmkcgpLomkXFM0l3HZChgGJ2sRhmii-4CSSJTM/0.jpg"
-            
         )
         #TextSendMessage:傳送文字訊息     
         #ImageSendMessage:傳送圖片
