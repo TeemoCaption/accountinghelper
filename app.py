@@ -1,5 +1,6 @@
 from pyparsing import originalTextFor
 from flask import Flask, request, abort
+import pyparsing
 
 from linebot import (
     LineBotApi, WebhookHandler
