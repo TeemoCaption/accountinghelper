@@ -1,5 +1,3 @@
-
-from sqlalchemy import true
 from flask import Flask, request, abort
 
 from linebot import (
