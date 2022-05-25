@@ -1,4 +1,5 @@
 
+from sqlalchemy import true
 from flask import Flask, request, abort
 
 from linebot import (
@@ -28,8 +29,12 @@ def push_message():
     tonow = datetime.datetime.now()
     message="今天是"+tonow.month+tonow.day+"日，你今天還沒有記帳歐!要記得記帳阿!"
     line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
-    
+
 schedule.every().day.do(push_message)
+while true:
+    schedule.run_pending()    #run_pending：執行所有可以執行的任務
+    time.sleep(1)    #睡眠1秒   
+
 
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
