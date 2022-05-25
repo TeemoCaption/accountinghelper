@@ -1,4 +1,3 @@
-from sqlalchemy import true
 from flask import Flask, request, abort
 
 from linebot import (
@@ -20,8 +19,6 @@ import tempfile, os
 import datetime
 import time
 #======python的函數庫==========
-import schedule
-
 
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
@@ -36,10 +33,7 @@ def push_message():
     message=TextMessage(text="你今天還沒有記帳歐!要記得記帳阿!")
     line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
     #threading.Thread(target=push_message).start()
-schedule.every().day.do(push_message)
-while true:  
-    schedule.run_pending()  
-    time.sleep(1)
+
   
   
 # 監聽所有來自 /callback 的 Post Request
