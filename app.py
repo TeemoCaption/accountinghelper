@@ -21,13 +21,6 @@ import time
 #======python的函數庫==========
 import schedule
 
-uid="Udcc2be39b00c9186e7f98d6b9b6cb1f1"
-def push_message():
-    tonow = datetime.datetime.now()
-    message=TextMessage(text="你今天還沒有記帳歐!要記得記帳阿!")
-    line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
-#threading.Thread(target=push_message).start()
-schedule.every().day.do(push_message)
 
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
@@ -36,6 +29,17 @@ line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7Uvg
 # Channel Secret
 handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
 
+uid="Udcc2be39b00c9186e7f98d6b9b6cb1f1"
+def push_message():
+    #tonow = datetime.datetime.now()
+    message=TextMessage(text="你今天還沒有記帳歐!要記得記帳阿!")
+    line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
+    #threading.Thread(target=push_message).start()
+    
+schedule.every().day.do(push_message)
+while True:  
+    schedule.run_pending()  
+    time.sleep(1)  
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
