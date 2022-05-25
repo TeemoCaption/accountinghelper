@@ -26,7 +26,7 @@ def push_message():
     while 1==1:
         time.sleep(6)
         tonow = datetime.datetime.now()
-        message="今天是"+tonow.month+tonow.day+"日，你今天還沒有記帳歐!要記得記帳阿!"
+        message="今天是"+str(tonow.month)+str(tonow.day)+"日，你今天還沒有記帳歐!要記得記帳阿!"
         line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
 threading.Thread(target=push_message).start()
 
