@@ -22,18 +22,15 @@ import datetime
 import time
 #======python的函數庫==========
 import threading
-import schedule
 
 uid="Udcc2be39b00c9186e7f98d6b9b6cb1f1"
 def push_message():
-    tonow = datetime.datetime.now()
-    message="今天是"+tonow.month+tonow.day+"日，你今天還沒有記帳歐!要記得記帳阿!"
-    line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
-
-schedule.every().day.do(push_message)
-while true:
-    schedule.run_pending()    #run_pending：執行所有可以執行的任務
-    time.sleep(1)    #睡眠1秒   
+    while 1=1:
+        time.sleep(6)
+        tonow = datetime.datetime.now()
+        message="今天是"+tonow.month+tonow.day+"日，你今天還沒有記帳歐!要記得記帳阿!"
+        line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
+threading.Thread(target=push_message).start()
 
 
 app = Flask(__name__)
