@@ -28,7 +28,7 @@ def push_message():
         tonow = datetime.datetime.now()
         message=TextMessage(text="你今天還沒有記帳歐!要記得記帳阿!")
         line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
-threading.Thread(target=push_message).start()
+#threading.Thread(target=push_message).start()
 
 
 app = Flask(__name__)
