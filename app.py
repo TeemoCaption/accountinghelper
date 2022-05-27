@@ -51,55 +51,24 @@ def callback():
         abort(400)
     return 'OK'
 
-#快速回復按鈕
-def button_reply():   
-    message=TextSendMessage(
-        text="Quick Reply",
-        quick_reply=QuickReply(
-            items=[
-                QuickReplyButton(label="最新合作廠商",text="最新合作廠商"),
-                QuickReplyButton(label="最新活動訊息",text="最新活動訊息"),
-                QuickReplyButton(label="註冊會員",text="註冊會員"),
-                QuickReplyButton(label="旋轉木馬",text="旋轉木馬"),
-                QuickReplyButton(label="圖片畫廊",text="圖片畫廊"),
-                QuickReplyButton(label="功能列表",text="功能列表"),
-            ]
-        )
-    )
-    return message
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = button_reply()
-    
-    if '最新合作廠商' in msg:
-        message = imagemap_message()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '最新活動訊息' in msg:
-        message = buttons_message()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '註冊會員' in msg:
-        message = Confirm_Template()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '旋轉木馬' in msg:
-        message = Carousel_Template()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '圖片畫廊' in msg:
-        message = test()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '功能列表' in msg:
-        message = function_list()
-        line_bot_api.reply_message(event.reply_token, message)
-    else:
-        message = ImageSendMessage(
-            original_content_url="https://i2.kknews.cc/0pmkcgpLomkXFM0l3HZChgGJ2sRhmii-4CSSJTM/0.jpg",
-            preview_image_url="https://i2.kknews.cc/0pmkcgpLomkXFM0l3HZChgGJ2sRhmii-4CSSJTM/0.jpg"
+    message=TextSendMessage(
+        text="Quick Reply",
+        quick_reply=QuickReply(
+            items=[
+                QuickReplyButton(label="最新合作廠商",text=imagemap_message()),
+                QuickReplyButton(label="最新活動訊息",text=buttons_message()),
+                QuickReplyButton(label="註冊會員",text=Confirm_Template()),
+                QuickReplyButton(label="旋轉木馬",text=Carousel_Template()),
+                QuickReplyButton(label="圖片畫廊",text=test()),
+                QuickReplyButton(label="功能列表",text=function_list()),
+            ]
         )
-        #TextSendMessage:傳送文字訊息     
-        #ImageSendMessage:傳送圖片
-        
-        line_bot_api.reply_message(event.reply_token, message)
+    )
+    line_bot_api.reply_message(event.reply_token, message)
 
 @handler.add(PostbackEvent)
 def handle_message(event):
