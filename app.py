@@ -64,6 +64,7 @@ def handle_message(event):
     elif '新增消費紀錄' ==msg:
         message=AddRecord()
         line_bot_api.reply_message(event.reply_token, message)
+    
     elif '最新合作廠商'  == msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
