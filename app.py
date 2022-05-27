@@ -73,7 +73,8 @@ def button_reply():
 def handle_message(event):
     msg = event.message.text
     if '查看功能' ==msg:
-        button_reply()
+        message = button_reply()
+        line_bot_api.reply_message(event.reply_token, message)
     elif '最新合作廠商'  == msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
