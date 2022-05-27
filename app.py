@@ -12,6 +12,7 @@ from linebot.models import *
 from message import *
 from new import *
 from Function import *
+from Record_money import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
@@ -53,14 +54,15 @@ def callback():
 
 
 
-    
-
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
     if '查看功能' ==msg:
         message = button_reply()
+        line_bot_api.reply_message(event.reply_token, message)
+    elif '新增紀錄' ==msg:
+        message=AddRecord()
         line_bot_api.reply_message(event.reply_token, message)
     elif '最新合作廠商'  == msg:
         message = imagemap_message()
