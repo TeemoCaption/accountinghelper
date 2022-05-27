@@ -61,7 +61,7 @@ def handle_message(event):
     if '查看功能' ==msg:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '新增紀錄' ==msg:
+    elif '新增消費紀錄' ==msg:
         message=AddRecord()
         line_bot_api.reply_message(event.reply_token, message)
     elif '最新合作廠商'  == msg:
