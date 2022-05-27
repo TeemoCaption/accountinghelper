@@ -51,11 +51,8 @@ def callback():
         abort(400)
     return 'OK'
 
-
-# 處理訊息
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    msg=TextSendMessage(
+def button_reply(event):
+    message=TextSendMessage(
         text="查看功能",
         quick_reply=QuickReply(
             items=[
@@ -67,6 +64,12 @@ def handle_message(event):
             ]
         )
     )
+    line_bot_api.reply_message(event.reply_token, message)
+
+# 處理訊息
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    msg=button_reply()
     if '最新合作廠商'  == msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
