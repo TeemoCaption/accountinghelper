@@ -59,12 +59,12 @@ def handle_message(event):
         text="Quick Reply",
         quick_reply=QuickReply(
             items=[
-                QuickReplyButton(label="最新合作廠商",text=imagemap_message()),
-                QuickReplyButton(label="最新活動訊息",text=buttons_message()),
-                QuickReplyButton(label="註冊會員",text=Confirm_Template()),
-                QuickReplyButton(label="旋轉木馬",text=Carousel_Template()),
-                QuickReplyButton(label="圖片畫廊",text=test()),
-                QuickReplyButton(label="功能列表",text=function_list()),
+                QuickReplyButton(action=MessageAction(label="最新合作廠商",text=imagemap_message())),
+                QuickReplyButton(action=MessageAction(label="最新活動訊息",text=buttons_message())),
+                QuickReplyButton(action=MessageAction(label="註冊會員",text=Confirm_Template())),
+                QuickReplyButton(action=MessageAction(label="旋轉木馬",text=Carousel_Template())),
+                QuickReplyButton(action=MessageAction(label="圖片畫廊",text=test())),
+                QuickReplyButton(action=MessageAction(label="功能列表",text=function_list())),
             ]
         )
     )
