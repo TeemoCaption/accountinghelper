@@ -9,7 +9,7 @@ def AddRecord():
         alt_text='確認介面',
         template=ConfirmTemplate(
             text="你要新增一筆「收入」or「支出」?",
-            action=[
+            actions=[
                 MessageTemplateAction(
                     label="收入",
                     text="收入"
@@ -17,7 +17,7 @@ def AddRecord():
                 MessageTemplateAction(
                     label="支出",
                     text="支出"
-                ),
+                )
             ]
         )
     )
