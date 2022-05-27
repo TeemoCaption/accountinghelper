@@ -54,7 +54,7 @@ def callback():
 
 def button_reply():
     message=TextSendMessage(
-        text="查看功能",
+        text="a quick reply message",
         quick_reply=QuickReply(
             items=[
                 QuickReplyButton(action=MessageAction(label="最新合作廠商",text="最新合作廠商")),
@@ -72,7 +72,9 @@ def button_reply():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    if '最新合作廠商'  == msg:
+    if '查看功能' ==msg:
+        button_reply()
+    elif '最新合作廠商'  == msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
     elif '最新活動訊息' == msg:
