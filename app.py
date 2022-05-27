@@ -51,6 +51,7 @@ def callback():
         abort(400)
     return 'OK'
 
+@handler.add(MessageEvent, message=TextMessage)
 def button_reply(event):
     message=TextSendMessage(
         text="查看功能",
