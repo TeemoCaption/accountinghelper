@@ -54,7 +54,7 @@ def callback():
 
 def button_reply():
     message=TextSendMessage(
-        text="a quick reply message",
+        text="你需要什麼幫助?",
         quick_reply=QuickReply(
             items=[
                 QuickReplyButton(action=MessageAction(label="最新合作廠商",text="最新合作廠商")),
