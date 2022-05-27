@@ -51,7 +51,7 @@ def callback():
         abort(400)
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessage)
+
 def button_reply():
     message=TextSendMessage(
         text="查看功能",
@@ -65,7 +65,8 @@ def button_reply():
             ]
         )
     )
-    line_bot_api.reply_message(event.reply_token, message)
+    return message
+    
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
