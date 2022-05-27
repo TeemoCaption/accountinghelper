@@ -52,7 +52,7 @@ def callback():
     return 'OK'
 
 @handler.add(MessageEvent, message=TextMessage)
-def button_reply(event):
+def button_reply():
     message=TextSendMessage(
         text="查看功能",
         quick_reply=QuickReply(
