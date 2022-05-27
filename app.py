@@ -51,11 +51,28 @@ def callback():
         abort(400)
     return 'OK'
 
+#快速回復按鈕
+def button_reply():   
+    message=TextSendMessage(
+        text="Quick Reply",
+        quick_reply=QuickReply(
+            items=[
+                QuickReplyButton(label="最新合作廠商",text="最新合作廠商"),
+                QuickReplyButton(label="最新活動訊息",text="最新活動訊息"),
+                QuickReplyButton(label="註冊會員",text="註冊會員"),
+                QuickReplyButton(label="旋轉木馬",text="旋轉木馬"),
+                QuickReplyButton(label="圖片畫廊",text="圖片畫廊"),
+                QuickReplyButton(label="功能列表",text="功能列表"),
+            ]
+        )
+    )
+    return message
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = event.message.text   #讀取使用者輸入的訊息
+    msg = button_reply()
+    
     if '最新合作廠商' in msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
