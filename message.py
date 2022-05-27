@@ -3,6 +3,23 @@ from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
+
+#快速回覆訊息
+def button_reply():
+    message=TextSendMessage(
+        text="你需要什麼幫助?",
+        quick_reply=QuickReply(
+            items=[
+                QuickReplyButton(action=MessageAction(label="最新合作廠商",text="最新合作廠商")),
+                QuickReplyButton(action=MessageAction(label="最新活動訊息",text="最新活動訊息")),
+                QuickReplyButton(action=MessageAction(label="註冊會員",text="註冊會員")),
+                QuickReplyButton(action=MessageAction(label="旋轉木馬",text="旋轉木馬")),
+                QuickReplyButton(action=MessageAction(label="圖片畫廊",text="圖片畫廊")),
+            ]
+        )
+    )
+    return message
+
 #ImagemapSendMessage(組圖訊息)
 def imagemap_message():
     message = ImagemapSendMessage(
