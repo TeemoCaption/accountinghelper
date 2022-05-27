@@ -56,7 +56,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg=TextSendMessage(
-        text="Quick Reply",
+        text="查看功能",
         quick_reply=QuickReply(
             items=[
                 QuickReplyButton(action=MessageAction(label="最新合作廠商",text="最新合作廠商")),
@@ -64,28 +64,27 @@ def handle_message(event):
                 QuickReplyButton(action=MessageAction(label="註冊會員",text="註冊會員")),
                 QuickReplyButton(action=MessageAction(label="旋轉木馬",text="旋轉木馬")),
                 QuickReplyButton(action=MessageAction(label="圖片畫廊",text="圖片畫廊")),
-                QuickReplyButton(action=MessageAction(label="功能列表",text="功能列表")),
             ]
         )
     )
-    if '最新合作廠商' in msg:
+    if '最新合作廠商'  == msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '最新活動訊息' in msg:
+    elif '最新活動訊息' == msg:
         message = buttons_message()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '註冊會員' in msg:
+    elif '註冊會員' == msg:
         message = Confirm_Template()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '旋轉木馬' in msg:
+    elif '旋轉木馬' == msg:
         message = Carousel_Template()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '圖片畫廊' in msg:
+    elif '圖片畫廊' == msg:
         message = test()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '功能列表' in msg:
-        message = function_list()
-        line_bot_api.reply_message(event.reply_token, message)
+    #elif '功能列表' in msg:
+        #message = function_list()
+        #line_bot_api.reply_message(event.reply_token, message)
     else:
         message = ImageSendMessage(
             original_content_url="https://i2.kknews.cc/0pmkcgpLomkXFM0l3HZChgGJ2sRhmii-4CSSJTM/0.jpg",
