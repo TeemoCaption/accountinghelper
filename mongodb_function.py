@@ -2,11 +2,11 @@ import pymongo
 
 # 要獲得mongodb網址，請至mongodb網站申請帳號進行資料庫建立，網址　https://www.mongodb.com/
 # 獲取的網址方法之範例如圖： https://i.imgur.com/HLCk99r.png
-client = pymongo.MongoClient("自己的mongodb連線網址")
+client = pymongo.MongoClient("mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
 
 #第一個db的建立
-db = client['MongoClient']
-col = db['Database']
+db = client['LineBot_AccountHelper']
+col = db['record_money']
 
 #print(client.database_names())#列出client中的資料庫名稱
 #print(db.collection_names())#列出db中的集合名稱
