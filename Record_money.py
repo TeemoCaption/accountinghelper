@@ -23,3 +23,7 @@ def AddRecord():
     )
     return message
 
+#讓使用者選擇記帳時間
+def Record_time():
+    
+
