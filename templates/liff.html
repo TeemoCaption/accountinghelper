@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maso的萬事屋LINEBOT範例</title>
+    <title>今日記帳</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script>
@@ -16,98 +16,6 @@
             });
         });
         //==========================LIFF API初始化================================
-
-        function liff_getOS() {
-            var OS = liff.getOS();
-            alert(OS);
-        }
-
-        function liff_getLanguage() {
-            var Language = liff.getLanguage();
-            alert(Language);
-        }
-
-        function liff_getVersion() {
-            var Version = liff.getVersion();
-            alert(Version);
-        }
-
-        function liff_getLineVersion() {
-            var LineVersion = liff.getLineVersion();
-            alert(LineVersion);
-        }
-
-        function liff_isInClient() {
-            var InClient = liff.isInClient();
-            if (InClient != true) {
-                alert("未使用LIFF瀏覽器");
-            } else {
-                alert("已使用LIFF瀏覽器");
-            }
-        }
-
-        function liff_isLoggedIn() {
-            var isLoggedIn = liff.isLoggedIn();
-            if (isLoggedIn != true) {
-                alert("未登入LINE");
-            } else {
-                alert("已登入LINE");
-            }
-        }
-
-        function liff_login() {
-            liff.login({
-                redirectUri: "https://maso-personal.herokuapp.com/",
-            });
-        }
-
-        function liff_logout() {
-            liff.logout();
-        }
-
-        function liff_getAccessToken() {
-            var accessToken = liff.getAccessToken();
-            alert(accessToken);
-        }
-
-        function liff_getIDToken() {
-            var IDToken = liff.getIDToken();
-            alert(IDToken);
-        }
-
-        function liff_getDecodedIDToken() {
-            var DecodedIDToken = JSON.stringify(liff.getDecodedIDToken());
-            alert(DecodedIDToken);
-        }
-
-        function liff_getContext() {
-            var Context = JSON.stringify(liff.getContext());
-            alert(Context);
-        }
-
-        function liff_getProfile() {
-            liff
-                .getProfile()
-                .then((profile) => {
-                    alert(JSON.stringify(profile));
-                })
-                .catch((err) => {
-                    console.log("error", err);
-                });
-        }
-
-        function liff_getFriendship() {
-            var Friendship = liff.getFriendship();
-            alert(Friendship);
-        }
-
-        function liff_sendMessages() {
-            liff.sendMessages([{
-                type: "text",
-                text: "這一則訊息是來自LIFF網頁",
-            }, ]);
-            alert("LIFF傳送訊息");
-        }
 
         function liff_openWindow() {
             // window.location.replace("https://developers.line.biz/en/reference/liff/")
