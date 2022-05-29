@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort,render_template
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -34,9 +34,9 @@ line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7Uvg
 handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
 
 
-liff_api = LIFF(CHANNEL_ACCESS_TOKEN)
-line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
-handler = WebhookHandler(CHANNEL_SECRET)
+liff_api = LIFF("Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=")
+line_bot_api = LineBotApi("Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=")
+handler = WebhookHandler("a8ce48921e34d218c60bcbaf3cca1861")
 
 try:
     now_LIFF_APP_number = len(liff_api.get())
@@ -49,6 +49,9 @@ if now_LIFF_APP_number < target_LIFF_APP_number:
     for i in range(target_LIFF_APP_number - now_LIFF_APP_number):
         liff_api.add(view_type="full",view_url="https://www.google.com")
 
+@app.route("/")
+def index():
+    return render_template("./liff.html")
 
 
 uid="Udcc2be39b00c9186e7f98d6b9b6cb1f1"
