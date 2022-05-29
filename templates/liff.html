@@ -210,6 +210,10 @@
         }
     </script>
     <style>
+        * {
+            font-size: 20px;
+        }
+        
         h1 {
             width: 80%;
             height: 40px;
@@ -217,7 +221,7 @@
         }
         
         button {
-            width: 80%;
+            width: 120px;
             height: 40px;
             margin-left: 10%;
             background-color: #c9e8e3;
@@ -227,35 +231,31 @@
 </head>
 
 <body>
-    <h1>Maso的萬事屋</h1>
-    <h1>LIFF API測試範例：</h1>
-    <h1></h1>
-    <button onclick="liff_getOS()">顯示使用者作業系統</button><br /><br />
-    <button onclick="liff_getLanguage()">顯示使用者語言</button><br /><br />
-    <button onclick="liff_getVersion()">顯示LIFF SDK版本</button><br /><br />
-    <button onclick="liff_getLineVersion()">顯示LINE版本</button><br /><br />
-    <button onclick="liff_isInClient()">顯示是否在LIFF瀏覽器內</button
-    ><br /><br />
-    <button onclick="liff_isLoggedIn()">顯示是否登入LINE</button><br /><br />
-    <button onclick="liff_login()">登入LINE</button><br /><br />
-    <button onclick="liff_logout()">登出LINE</button><br /><br />
-    <button onclick="liff_isApiAvailable()">
-      顯示是否此網頁可用liff.shareTargetPicker() API</button
-    ><br /><br />
-    <button onclick="liff_getAccessToken()">獲得用戶accessToken</button
-    ><br /><br />
-    <button onclick="liff_getIDToken()">獲得用戶IDToken</button><br /><br />
-    <button onclick="liff_getDecodedIDToken()">獲得用戶DecodedIDToken</button
-    ><br /><br />
-    <button onclick="liff_getContext()">獲得啟動LIFF網頁來源的背景資訊</button
-    ><br /><br />
-    <button onclick="liff_getProfile()">獲得使用者資訊</button><br /><br />
-    <button onclick="liff_sendMessages()">傳送訊息</button><br /><br />
-    <button onclick="liff_openWindow()">開啟新視窗</button><br /><br />
-    <button onclick="liff_closeWindow()">關閉新視窗</button><br /><br />
-    <button onclick="liff_shareTargetPicker()">分享指定訊息</button><br /><br />
-    <button onclick="liff_LINE_Card()">傳送LINE名片</button><br /><br />
-    <br /><br />
+    <h1>今日記帳</h1>
+    <label for="m_class">請選擇收入或支出：</label>
+    <input type="radio" id="m_class" name="m_class">
+    <br>
+    <label for="m_date">請選擇時間：</label>
+    <input type="date" id="m_date" name="m_date">
+    <br>
+    <label for="m_type">請選擇類別：</label>
+    <select name="type">
+        <optgroup label="收入">
+          <option>Tiger</option>
+          <option>Leopard</option>
+          <option>Lynx</option>
+        </optgroup>
+        <optgroup label="支出">
+          <option>飲食</option>
+          <option>交通</option>
+          <option>居家</option>
+          <option>服飾</option>
+          <option>汽機車</option>
+          <option>娛樂</option>
+          <option>醫療保健</option>
+        </optgroup>
+      </select>
+    <input type="submit" value="確認">
 </body>
 
 </html>
