@@ -140,11 +140,17 @@
 
 <body>
     <h1>今日記帳</h1>
-    <label for="m_class">請選擇收入或支出：</label>
-    <input type="radio" id="m_class" name="m_class">
+    <p>請選擇收入或支出：</p>
+    <input type="radio" id="m_class1" name="m_class" value="收入">
+    <label for="m_class1">收入</label>
+    <br>
+    <input type="radio" id="m_class2" name="m_class" value="支出">
+    <label for="m_class2">支出</label><br>
+    <br>
     <br>
     <label for="m_date">請選擇時間：</label>
     <input type="date" id="m_date" name="m_date">
+    <br>
     <br>
     <label for="m_type">請選擇類別：</label>
     <select name="type">
@@ -164,7 +170,9 @@
         </optgroup>
     </select>
     <br>
+    <br>
     <input type="submit" value="確認">
+    <br>
     <br>
     <button onclick="liff_LINE_Card()">傳送LINE名片</button><br /><br />
 </body>
