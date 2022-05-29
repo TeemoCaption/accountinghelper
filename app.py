@@ -8,6 +8,11 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from liffpy import (
+    LineFrontendFramework as LIFF,
+    ErrorResponse
+)
+
 #======這裡是呼叫的檔案內容=====
 from message import *
 from new import *
@@ -28,6 +33,24 @@ line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7Uvg
 # Channel Secret
 handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
 
+
+liff_api = LIFF(CHANNEL_ACCESS_TOKEN)
+line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(CHANNEL_SECRET)
+
+try:
+    now_LIFF_APP_number = len(liff_api.get())
+except:
+    now_LIFF_APP_number = 0
+
+target_LIFF_APP_number = 10
+print(target_LIFF_APP_number,now_LIFF_APP_number)
+if now_LIFF_APP_number < target_LIFF_APP_number:
+    for i in range(target_LIFF_APP_number - now_LIFF_APP_number):
+        liff_api.add(view_type="full",view_url="https://www.google.com")
+
+
+
 uid="Udcc2be39b00c9186e7f98d6b9b6cb1f1"
 def push_message():
     #tonow = datetime.datetime.now()
@@ -35,7 +58,6 @@ def push_message():
     line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
     #threading.Thread(target=push_message).start()
 
-  
   
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -64,7 +86,9 @@ def handle_message(event):
     elif '新增帳務' ==msg:
         message=AddRecord()
         line_bot_api.reply_message(event.reply_token, message)
-    
+    elif '收入'==msg:
+        message=AddRecord()
+        line_bot_api.reply_message(event.reply_token, message)
     elif '最新合作廠商'  == msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
