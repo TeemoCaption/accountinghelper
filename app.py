@@ -86,7 +86,7 @@ def handle_message(event):
     if '查看功能' ==msg:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '新增帳務' ==msg:
+    elif '我要記帳' ==msg:
         message=TextSendMessage(text="https://accountinghelper.herokuapp.com/")
         line_bot_api.reply_message(event.reply_token, message)
     
