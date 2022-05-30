@@ -87,7 +87,7 @@ def handle_message(event):
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
     elif '新增帳務' ==msg:
-        message="https://accountinghelper.herokuapp.com/"
+        message=TextSendMessage(text="https://accountinghelper.herokuapp.com/")
         line_bot_api.reply_message(event.reply_token, message)
     
     elif '最新合作廠商'  == msg:
