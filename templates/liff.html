@@ -36,7 +36,7 @@
     <style type="text/css">
         * {
             font-size: 20px;
-            color: white;
+            color: #f72585;
         }
         
         html,
@@ -63,10 +63,32 @@
             <input id="m_time" type="datetime-local" name="m_time">
         </div>
         <div class="mb-3 form-check">
-
-
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <optgroup label="收入">
+                    <option value="飲食" selected>飲食</option>
+                    <option value="日常用品">日常用品</option>
+                    <option value="交通">交通</option>
+                    <option value="居家">居家</option>
+                    <option value="汽機車">汽機車</option>
+                    <option value="娛樂">娛樂</option>
+                    <option value="醫療保健">醫療保健</option>
+                </optgroup>
+                <optgroup label="支出">
+                    <option value="飲食" selected>飲食</option>
+                    <option value="日常用品">日常用品</option>
+                    <option value="交通">交通</option>
+                    <option value="居家">居家</option>
+                    <option value="汽機車">汽機車</option>
+                    <option value="娛樂">娛樂</option>
+                    <option value="醫療保健">醫療保健</option>
+                </optgroup>
+              </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3">
+            <label for="inputitem" class="visually-hidden">項目名稱</label>
+            <input type="password" class="form-control" id="inputitem" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">送出</button>
     </form>
 </body>
 
