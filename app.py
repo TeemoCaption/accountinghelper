@@ -109,14 +109,10 @@ def handle_message(event):
         #message = function_list()
         #line_bot_api.reply_message(event.reply_token, message)
     else:
-        message = ImageSendMessage(
-            original_content_url="https://i2.kknews.cc/0pmkcgpLomkXFM0l3HZChgGJ2sRhmii-4CSSJTM/0.jpg",
-            preview_image_url="https://i2.kknews.cc/0pmkcgpLomkXFM0l3HZChgGJ2sRhmii-4CSSJTM/0.jpg"
-        )
+        message = button_reply()
+        line_bot_api.reply_message(event.reply_token, message)
         #TextSendMessage:傳送文字訊息     
         #ImageSendMessage:傳送圖片
-        
-        line_bot_api.reply_message(event.reply_token, message)
     
 
 @handler.add(PostbackEvent)
