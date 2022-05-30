@@ -10,7 +10,7 @@ def button_reply():
         text="你需要什麼幫助?",
         quick_reply=QuickReply(
             items=[
-                QuickReplyButton(action=MessageAction(label="新增帳務",text="新增帳務")),
+                QuickReplyButton(action=MessageAction(label="我要記帳",text="我要記帳")),
                 QuickReplyButton(action=MessageAction(label="最新合作廠商",text="最新合作廠商")),
                 QuickReplyButton(action=MessageAction(label="最新活動訊息",text="最新活動訊息")),
                 QuickReplyButton(action=MessageAction(label="註冊會員",text="註冊會員")),
