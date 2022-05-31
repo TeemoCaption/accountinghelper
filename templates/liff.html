@@ -85,7 +85,7 @@
         <div class="mb-3">
             <input type="text" class="form-control" id="inputkeep">
         </div>
-        <button type="submit" class="btn btn-primary" onclick="performPost()">送出</button>
+        <button type="submit" class="btn btn-primary" id="btnsubmit">送出</button>
     </form>
 </body>
 <script>
@@ -108,17 +108,17 @@
     function liff_closeWindow() {
         liff.closeWindow();
     }
-
-    function performPost() {
+    $("#submit").click(function(e) {
+        alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
         $.ajax({
             type: "POST",
-            url: "{{url_for('getAdd')}}",
+            url: "/",
             data: {
                 "name": "Jim"
             }
-        })
-        alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!")
-    }
+        });
+        e.preventDefault();
+    });
 </script>
 
 </html>
