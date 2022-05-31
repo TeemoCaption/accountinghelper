@@ -61,20 +61,11 @@ def push_message():
     line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
     #threading.Thread(target=push_message).start()
 
-
-@app.route("/getAdd",methods=["GET","POST"])
-def getAdd():
+@app.route("/",methods=["GET","POST"])
+def index():
     if request.method=="POST":
         name=json.loads(request.data).get("name")
         return name
-        
-    return render_template("./liff.html")
-
-@app.route("/",methods=["GET","POST"])
-def index():
-    
-        
-        
     return render_template("./liff.html")
 
 
