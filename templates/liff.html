@@ -112,7 +112,7 @@
     function performPost() {
         $.ajax({
             type: "POST",
-            url: "",
+            url: "{{url_for('getAdd')}}",
             data: {
                 "name": "Jim"
             }
