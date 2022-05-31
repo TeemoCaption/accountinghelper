@@ -1,6 +1,7 @@
 from crypt import methods
 from email import message
 from flask import Flask, jsonify, request, abort,render_template
+import json
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -60,12 +61,20 @@ def push_message():
     line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
     #threading.Thread(target=push_message).start()
 
+
+@app.route("/getAdd",methods=["GET","POST"])
+def getAdd():
+    if request.method=="POST":
+        name=json.loads(request.data).get("name")
+        return name
+        
+    return render_template("./liff.html")
+
 @app.route("/",methods=["GET","POST"])
 def index():
-    if request.method=="POST":
-        print(request.form)
-        message={"message":"Python request"}
-        return message
+    
+        
+        
     return render_template("./liff.html")
 
 
