@@ -110,7 +110,7 @@
     }
 
     function btnsubmit(e) {
-        alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
+
         $.ajax({
             type: "POST",
             url: "/",
@@ -125,6 +125,7 @@
             }
         });
         e.preventDefault();
+        alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
     }
 </script>
 
