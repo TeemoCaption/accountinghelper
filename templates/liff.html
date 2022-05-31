@@ -10,27 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <script>
-        //==========================LIFF API初始化================================
-        $(document).ready(function() {
-            liff.init({
-                liffId: "1657173800-nQWeLeO7"
-            });
-        });
-        //==========================LIFF API初始化================================
 
-        function liff_openWindow() {
-            // window.location.replace("https://developers.line.biz/en/reference/liff/")
-            liff.openWindow({
-                url: "https://developers.line.biz/en/reference/liff/",
-                external: true,
-            });
-        }
-
-        function liff_closeWindow() {
-            liff.closeWindow();
-        }
-    </script>
 
 
     <style type="text/css">
@@ -108,5 +88,36 @@
         <button type="submit" class="btn btn-primary">送出</button>
     </form>
 </body>
+<script>
+    //==========================LIFF API初始化================================
+    $(document).ready(function() {
+        liff.init({
+            liffId: "1657173800-nQWeLeO7"
+        });
+    });
+    //==========================LIFF API初始化================================
+
+    function liff_openWindow() {
+        // window.location.replace("https://developers.line.biz/en/reference/liff/")
+        liff.openWindow({
+            url: "https://developers.line.biz/en/reference/liff/",
+            external: true,
+        });
+    }
+
+    function liff_closeWindow() {
+        liff.closeWindow();
+    }
+
+    function performPost() {
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: {
+                "name":
+            }
+        })
+    }
+</script>
 
 </html>
