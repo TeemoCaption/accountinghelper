@@ -85,7 +85,7 @@
         <div class="mb-3">
             <input type="text" class="form-control" id="inputkeep">
         </div>
-        <button type="submit" class="btn btn-primary" onclick="btnsubmit()">送出</button>
+        <button type="submit" class="btn btn-primary" id="btnsubmit">送出</button>
     </form>
 </body>
 <script>
@@ -109,8 +109,8 @@
         liff.closeWindow();
     }
 
-    function btnsubmit(e) {
-
+    $("#btnsubmit").click(function(e) {
+        alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
         $.ajax({
             type: "POST",
             url: "/",
@@ -125,8 +125,8 @@
             }
         });
         e.preventDefault();
-        alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
-    }
+
+    });
 </script>
 
 </html>
