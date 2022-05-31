@@ -1,6 +1,6 @@
 from crypt import methods
 from email import message
-from flask import Flask, request, abort,render_template
+from flask import Flask, jsonify, request, abort,render_template
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -69,9 +69,8 @@ def index():
 @app.route("/getAdd",methods=['POST'])   
 def getAdd(event):
     if request.method=="POST":
-        print(request.form)
-        message=TextSendMessage(text="記帳成功")
-        line_bot_api.reply_message(event.reply_token, message)
+        message=jsonify(request.form)
+        return message
         
         
 
