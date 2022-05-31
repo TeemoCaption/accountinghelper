@@ -60,7 +60,7 @@ def push_message():
     line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
     #threading.Thread(target=push_message).start()
 
-@app.route("/")
+@app.route("/",methods=["GET","POST"])
 def index():
     if request.method=="POST":
         print(request.form)
