@@ -69,9 +69,6 @@ def index():
     return render_template("./liff.html")
 
 
-#監聽來自/getAdd的Post Request (利用Ajax)
-@app.route("/getAdd",methods=['POST'])   
-def getAdd(event):
     
         
         
