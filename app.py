@@ -62,15 +62,17 @@ def push_message():
 
 @app.route("/")
 def index():
+    if request.method=="POST":
+        print(request.form)
+        message={"message":"Python request"}
+        return message
     return render_template("./liff.html")
 
 
 #監聽來自/getAdd的Post Request (利用Ajax)
 @app.route("/getAdd",methods=['POST'])   
 def getAdd(event):
-    if request.method=="POST":
-        message=jsonify(request.form)
-        return message
+    
         
         
 
