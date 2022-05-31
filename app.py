@@ -1,3 +1,5 @@
+from crypt import methods
+from email import message
 from flask import Flask, request, abort,render_template
 
 from linebot import (
@@ -17,7 +19,6 @@ from liffpy import (
 from message import *
 from new import *
 from Function import *
-from Record_money import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
@@ -34,6 +35,7 @@ line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7Uvg
 handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
 
 
+#============LIFF API=================
 liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
 line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
@@ -49,11 +51,8 @@ if now_LIFF_APP_number < target_LIFF_APP_number:
     for i in range(target_LIFF_APP_number - now_LIFF_APP_number):
         liff_api.add(view_type="full",view_url="https://www.google.com")
 
-@app.route("/")
-def index():
-    return render_template("./liff.html")
 
-
+#===============每日提醒功能====================
 uid="Udcc2be39b00c9186e7f98d6b9b6cb1f1"
 def push_message():
     #tonow = datetime.datetime.now()
@@ -61,7 +60,21 @@ def push_message():
     line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
     #threading.Thread(target=push_message).start()
 
-  
+@app.route("/")
+def index():
+    return render_template("./liff.html")
+
+
+#監聽來自/getAdd的Post Request (利用Ajax)
+@app.route("/getAdd",methods=['POST'])   
+def getAdd(event):
+    if request.method=="POST":
+        print(request.form)
+        message=TextSendMessage(text="記帳成功")
+        line_bot_api.reply_message(event.reply_token, message)
+        
+        
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
