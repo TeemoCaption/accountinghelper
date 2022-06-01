@@ -66,6 +66,7 @@ def push_message():
 def index():
     if request.method=="POST":
         date=request.form.get('date')
+        
         Message={"date": date}
         return Message
     return render_template("./liff.html")

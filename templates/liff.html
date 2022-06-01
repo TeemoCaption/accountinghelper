@@ -41,10 +41,10 @@
         <div class="mb-3">
             <label>請選擇收入或支出：</label>
             <br>
-            <input class="form-check-input" type="radio" name="m_class" id="income">
-            <label class="form-check-label" for="m_class">收入</label>
-            <input class="form-check-input" type="radio" name="m_class" id="expenditure">
-            <label class="form-check-label" for="m_class">支出</label>
+            <input class="form-check-input" type="radio" id="income" value="收入">
+            <label class="form-check-label" for="income">收入</label>
+            <input class="form-check-input" type="radio" value="支出" id="expenditure">
+            <label class="form-check-label" for="expenditure">支出</label>
         </div>
         <div class="mb-3">
             <label for="m_time">選擇日期/時間：</label>
@@ -110,13 +110,16 @@
     }
 
     $("#btnsubmit").click(function(e) {
-        var date = document.querySelector('input[type="datetime-local"]')
+        var date = document.querySelector('input[type="datetime-local"]').value;
+        var m_class = document.querySelector('input[type="radio"]').value
+
         alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
         $.ajax({
             type: "POST",
             url: "/",
             data: {
-                "date": date.value
+                "class": m_class,
+                "date": date
             },
             success: function(response) {
                 console.log(response);
