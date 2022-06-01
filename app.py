@@ -20,6 +20,7 @@ from liffpy import (
 from message import *
 from new import *
 from Function import *
+from mongodb_function import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
@@ -72,7 +73,7 @@ def index():
         money=request.form.get('money')
         keep=request.form.get('keep')
         Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
-               
+        write_one_data()
         
         return Message
     return render_template("./liff.html")

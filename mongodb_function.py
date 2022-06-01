@@ -22,7 +22,7 @@ def dicMemberCheck(key, dicObj):
 
 #寫入資料data是dictionary
 def write_one_data():
-    post={"_id":1,"使用者名稱":"Teemo","收支":"收入","類別":"生活費","金額":500}
+    post={"_id":0,"name":"Jim"}
     col.insert_one(post)
 
 #寫入多筆資料，data是一個由dictionary組成的list
