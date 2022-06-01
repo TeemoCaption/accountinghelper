@@ -65,8 +65,8 @@ def push_message():
 @app.route("/",methods=["GET","POST"])
 def index():
     if request.method=="POST":
-        print(request.form)
-        Message={"message": "python post"}
+        name=request.form.get('name')
+        Message={"message": name}
         return Message
     return render_template("./liff.html")
 
