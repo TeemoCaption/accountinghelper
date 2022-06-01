@@ -67,8 +67,9 @@ def index():
     if request.method=="POST":
         m_class=request.form.get('class')
         date=request.form.get('date')
+        m_type=request.form.get('type')
+        Message={"class": m_class,"date": date,"type": m_type}
         
-        Message={"class": m_class,"date": date}
         return Message
     return render_template("./liff.html")
 

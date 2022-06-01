@@ -51,8 +51,8 @@
             <input id="m_time" type="datetime-local" name="m_time">
         </div>
         <div class="mb-3">
-            <label for="m_time">選擇類別：</label>
-            <select class="form-select" aria-label="Default select example">
+            <label for="m_type">選擇類別：</label>
+            <select class="form-select" aria-label="Default select example" id="m_type">
                 <optgroup label="收入">
                     <option value="飲食" selected>飲食</option>
                     <option value="日常用品">日常用品</option>
@@ -112,6 +112,8 @@
     $("#btnsubmit").click(function(e) {
         var date = document.querySelector('input[type="datetime-local"]').value;
         var m_class = document.querySelector('input[type="radio"]').value
+        var m_type = document.getElementById('#m_type').value
+
 
         alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
         $.ajax({
@@ -119,7 +121,8 @@
             url: "/",
             data: {
                 "class": m_class,
-                "date": date
+                "date": date,
+                "type": m_type
             },
             success: function(response) {
                 console.log(response);
