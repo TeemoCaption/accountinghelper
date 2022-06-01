@@ -79,7 +79,7 @@
         </div>
         <label class="form-label">金額：</label>
         <div class="mb-3">
-            <input type="text" class="form-control" id="inputitem">
+            <input type="text" class="form-control" id="inputmoney">
         </div>
         <label class="form-label">備註：</label>
         <div class="mb-3">
@@ -113,7 +113,9 @@
         var date = document.querySelector('input[type="datetime-local"]').value;
         var m_class = document.querySelector('input[type="radio"]').value;
         var m_type = $("#m_type").val();
-
+        var item = $("#inputitem").val();
+        var money = $("#inputmoney").val();
+        var keep = $("#inputkeep").val();
 
         alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
         $.ajax({
@@ -122,7 +124,10 @@
             data: {
                 "class": m_class,
                 "date": date,
-                "type": m_type
+                "type": m_type,
+                "item": item,
+                "money": money,
+                "keep": keep
             },
             success: function(response) {
                 console.log(response);
