@@ -61,12 +61,13 @@ def push_message():
     line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
     #threading.Thread(target=push_message).start()
 
+
 @app.route("/",methods=["GET","POST"])
 def index():
     if request.method=="POST":
         print(request.form)
         Message={"message": "python post"}
-        return message
+        return Message
     return render_template("./liff.html")
 
 
