@@ -110,12 +110,13 @@
     }
 
     $("#btnsubmit").click(function(e) {
+        var date = document.querySelector('input[type="datetime-local"]')
         alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
         $.ajax({
             type: "POST",
             url: "/",
             data: {
-                "date": $("#m_time").val.toString()
+                "date": date.value
             },
             success: function(response) {
                 console.log(response);
