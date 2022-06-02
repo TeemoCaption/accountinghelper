@@ -40,8 +40,6 @@ def write_one_data(m_class,date,m_type,item,money,keep):
           "keep":keep
     }
     col.insert_one(post)
-    message=TextSendMessage(text="你計了一筆帳")
-    return message
 
 #寫入多筆資料，data是一個由dictionary組成的list
 def write_many_datas(data):
