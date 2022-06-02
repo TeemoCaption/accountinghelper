@@ -62,7 +62,8 @@ def push_message():
 
 
 @app.route("/",methods=["GET","POST"])
-def index():
+@handler.add(MessageEvent)
+def index(event):
     if request.method=="POST":
         m_class=request.form.get('class')
         date=request.form.get('date')
@@ -71,7 +72,7 @@ def index():
         money=request.form.get('money')
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
-        write_one_data(m_class,date,m_type,item,money,keep)
+        write_one_data(event,m_class,date,m_type,item,money,keep)
         
         #return Message
     return render_template("./liff.html")
