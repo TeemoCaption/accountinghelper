@@ -117,25 +117,28 @@
         var money = $("#inputmoney").val();
         var keep = $("#inputkeep").val();
 
-        alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
-        $.ajax({
-            type: "POST",
-            url: "/",
-            data: {
-                "class": m_class,
-                "date": date,
-                "type": m_type,
-                "item": item,
-                "money": money,
-                "keep": keep
-            },
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+        if (item != "" || money != "" || date != "") {
+            alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: {
+                    "class": m_class,
+                    "date": date,
+                    "type": m_type,
+                    "item": item,
+                    "money": money,
+                    "keep": keep
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
     });
 </script>
 
