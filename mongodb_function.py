@@ -2,11 +2,15 @@ from cgitb import handler
 from os import abort
 from flask import Flask, jsonify, request, abort,render_template
 import pymongo
+#=======LineBot相關套件引入==========
+
 
 
 #Line Access token
 #line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
 #handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
+
+
 
 # 要獲得mongodb網址，請至mongodb網站申請帳號進行資料庫建立，網址　https://www.mongodb.com/
 # 獲取的網址方法之範例如圖： https://i.imgur.com/HLCk99r.png
@@ -31,7 +35,9 @@ def dicMemberCheck(key, dicObj):
 
 
 #寫入資料data是dictionary
+
 def write_one_data(m_class,date,m_type,item,money,keep):
+    user_id=handler_message()
     post={
           "class":m_class,
           "date":date,
@@ -41,6 +47,7 @@ def write_one_data(m_class,date,m_type,item,money,keep):
           "keep":keep
     }
     col.insert_one(post)
+  
 
 
 #寫入多筆資料，data是一個由dictionary組成的list
