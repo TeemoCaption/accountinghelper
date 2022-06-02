@@ -21,9 +21,15 @@ def dicMemberCheck(key, dicObj):
         return False
 
 #寫入資料data是dictionary
-def write_one_data():
-    
-    post={"_id":0,"name":"Jim"}
+def write_one_data(m_class,date,m_type,item,money,keep):
+    post={"_id":0,
+          "class":m_class,
+          "date":date,
+          "type":m_type,
+          "item":item,
+          "money":money,
+          "keep":keep
+    }
     col.insert_one(post)
 
 #寫入多筆資料，data是一個由dictionary組成的list
