@@ -1,15 +1,9 @@
 from cgitb import handler
+from os import abort
 import pymongo
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
 from linebot.exceptions import LineBotApiError
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import *
 
 
 
@@ -55,7 +49,7 @@ def write_one_data(event,m_class,date,m_type,item,money,keep):
     try:
         line_bot_api.push_message(user_id, TextSendMessage(text='Hello World!'))
     except LineBotApiError as e:
-        #錯誤訊息
+        return "Error"
 
 
 #寫入多筆資料，data是一個由dictionary組成的list
