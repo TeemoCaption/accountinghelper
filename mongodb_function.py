@@ -22,7 +22,7 @@ def dicMemberCheck(key, dicObj):
 
 #寫入資料data是dictionary
 def write_one_data(m_class,date,m_type,item,money,keep):
-    post={"_id":0,
+    post={
           "class":m_class,
           "date":date,
           "type":m_type,
