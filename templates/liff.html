@@ -117,7 +117,7 @@
         var money = $("#inputmoney").val();
         var keep = $("#inputkeep").val();
 
-        if (item != "" || money != "" || date != "") {
+        if (item != "" && money != "" && date != "") {
             alert("記帳完成!請關閉頁面或停留在這頁繼續記帳!");
             $.ajax({
                 type: "POST",
@@ -137,6 +137,7 @@
                     console.log(error);
                 }
             });
+
         }
 
     });
