@@ -62,7 +62,6 @@ def push_message():
 
 
 @app.route("/",methods=["GET","POST"])
-@handler.add(MessageEvent)
 def index(event):
     if request.method=="POST":
         m_class=request.form.get('class')
