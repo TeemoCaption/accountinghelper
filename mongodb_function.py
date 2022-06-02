@@ -1,8 +1,17 @@
 import pymongo
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
+from linebot.exceptions import LineBotApiError
+
+
+#Line Access token
+line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
+
 
 # 要獲得mongodb網址，請至mongodb網站申請帳號進行資料庫建立，網址　https://www.mongodb.com/
 # 獲取的網址方法之範例如圖： https://i.imgur.com/HLCk99r.png
 client = pymongo.MongoClient("mongodb+srv://Teemo:edwardmb0816@accounthelper.ul59p.mongodb.net/test")
+
 
 #第一個db的建立
 db = client['LineBot_AccountHelper']
@@ -31,6 +40,8 @@ def write_one_data(m_class,date,m_type,item,money,keep):
           "keep":keep
     }
     col.insert_one(post)
+    message=TextSendMessage(text="你計了一筆帳")
+    return message
 
 #寫入多筆資料，data是一個由dictionary組成的list
 def write_many_datas(data):
