@@ -22,8 +22,8 @@ def dicMemberCheck(key, dicObj):
 
 #寫入資料data是dictionary
 def write_one_data():
-    user_id=getNextSequence("_id")
-    post={"_id":user_id,"name":"Jim"}
+    
+    post={"_id":0,"name":"Jim"}
     col.insert_one(post)
 
 #寫入多筆資料，data是一個由dictionary組成的list
