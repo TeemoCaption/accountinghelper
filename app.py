@@ -62,7 +62,8 @@ def index():
         money=request.form.get('money')
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
-        write_one_data(send_token(),m_class,date,m_type,item,money,keep)
+        t=send_token()
+        write_one_data(t,m_class,date,m_type,item,money,keep)
         
         #return Message
     return render_template("./liff.html")
