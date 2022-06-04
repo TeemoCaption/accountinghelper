@@ -89,9 +89,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    def get_userid():
-        user_id=event.source.user_id
-        return user_id
+    global user_id
+    user_id=event.source.user_id
     if '查看功能' ==msg:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
