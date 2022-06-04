@@ -53,6 +53,7 @@ if now_LIFF_APP_number < target_LIFF_APP_number:
 
 
 @app.route("/",methods=["GET","POST"])
+@handler.add(MessageEvent,TextMessage)
 def index():
     if request.method=="POST":
         m_class=request.form.get('class')
@@ -62,8 +63,7 @@ def index():
         money=request.form.get('money')
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
-        write_one_data(token,m_class,date,m_type,item,money,keep)
-        
+        write_one_data(m_class,date,m_type,item,money,keep)
         #return Message
     return render_template("./liff.html")
 
@@ -97,9 +97,6 @@ def handle_message(event):
     elif '我要記帳' ==msg:
         message=TextSendMessage(text="https://accountinghelper.herokuapp.com/")
         line_bot_api.reply_message(event.reply_token, message)
-        t=get_token(event.reply_token)
-        global token
-        token=t
         
     elif '最新合作廠商'  == msg:
         message = imagemap_message()
