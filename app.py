@@ -52,17 +52,8 @@ if now_LIFF_APP_number < target_LIFF_APP_number:
         liff_api.add(view_type="full",view_url="https://www.google.com")
 
 
-#===============每日提醒功能====================
-uid="Udcc2be39b00c9186e7f98d6b9b6cb1f1"
-def push_message():
-    #tonow = datetime.datetime.now()
-    message=TextMessage(text="你今天還沒有記帳歐!要記得記帳阿!")
-    line_bot_api.push_message(uid,message)    #傳給指定用戶訊息
-    #threading.Thread(target=push_message).start()
-
-
 @app.route("/",methods=["GET","POST"])
-def index():
+def index(token):
     if request.method=="POST":
         m_class=request.form.get('class')
         date=request.form.get('date')
@@ -71,7 +62,7 @@ def index():
         money=request.form.get('money')
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
-        write_one_data(m_class,date,m_type,item,money,keep)
+        write_one_data(token,m_class,date,m_type,item,money,keep)
         
         #return Message
     return render_template("./liff.html")
@@ -94,7 +85,6 @@ def callback():
     return 'OK'
 
 
-
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -105,7 +95,7 @@ def handle_message(event):
     elif '我要記帳' ==msg:
         message=TextSendMessage(text="https://accountinghelper.herokuapp.com/")
         line_bot_api.reply_message(event.reply_token, message)
-    
+        index(event.reply_token)
     elif '最新合作廠商'  == msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)

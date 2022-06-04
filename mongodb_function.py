@@ -2,8 +2,12 @@ from cgitb import handler
 from os import abort
 from flask import Flask, jsonify, request, abort,render_template
 import pymongo
+from app import *
 #=======LineBot相關套件引入==========
-
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
+from linebot.exceptions import LineBotApiError
+line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
 
 
 #Line Access token
@@ -36,7 +40,7 @@ def dicMemberCheck(key, dicObj):
 
 #寫入資料data是dictionary
 
-def write_one_data(m_class,date,m_type,item,money,keep):
+def write_one_data(token,m_class,date,m_type,item,money,keep):
     post={
           "class":m_class,
           "date":date,
@@ -46,6 +50,11 @@ def write_one_data(m_class,date,m_type,item,money,keep):
           "keep":keep
     }
     col.insert_one(post)
+
+    try:
+        line_bot_api.reply_message(token, TextSendMessage(text='Hello World!'))
+    except LineBotApiError as e:
+        return "Error"
   
 
 
