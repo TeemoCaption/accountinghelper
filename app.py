@@ -67,7 +67,7 @@ def index():
         write_one_data(m_class,date,m_type,item,money,keep)
         message="你於"+date+"記了一筆"+m_class+"\n"+"項目類別："+m_type+"\n"
         +"項目名稱："+item+"\n"+"金額是$"+money+"元"+"\n"+"另外還備註是："+keep
-        line_bot_api.push_message(user_id,TextSendMessage(text=money))
+        line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template("./liff.html")
 
     
