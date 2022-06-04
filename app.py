@@ -67,6 +67,7 @@ def index():
         write_one_data(m_class,date,m_type,item,money,keep)
         message="你於"+date+"記了一筆"+m_class+"\n項目類別："+m_type+"\n項目名稱："+item+"\n金額是$"+money+"元"+"\n另外還備註是："+keep
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
+        user_id=""
     return render_template("./liff.html")
 
     
@@ -121,7 +122,6 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
         #TextSendMessage:傳送文字訊息     
         #ImageSendMessage:傳送圖片
-    
 
 @handler.add(PostbackEvent)
 def handle_message(event):
