@@ -8,7 +8,6 @@ from linebot import LineBotApi
 from linebot.models import TextSendMessage
 from linebot.exceptions import LineBotApiError
 line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
-your_id="Udcc2be39b00c9186e7f98d6b9b6cb1f1"
 
 
 #Line Access token
@@ -51,11 +50,6 @@ def write_one_data(m_class,date,m_type,item,money,keep):
           "keep":keep
     }
     col.insert_one(post)
-
-    try:
-        line_bot_api.reply_message(your_id,TextSendMessage(text='Hello World!'))
-    except LineBotApiError as e:
-        return "Error"
   
 
 

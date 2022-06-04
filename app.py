@@ -53,7 +53,6 @@ if now_LIFF_APP_number < target_LIFF_APP_number:
 
 
 @app.route("/",methods=["GET","POST"])
-@handler.add(MessageEvent,TextMessage)
 def index():
     if request.method=="POST":
         m_class=request.form.get('class')
