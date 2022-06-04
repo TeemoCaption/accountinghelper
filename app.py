@@ -65,8 +65,8 @@ def index():
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
         write_one_data(m_class,date,m_type,item,money,keep)
-        message="你於"+str(date)+"記了一筆"+str(m_class)+"\n"+"項目類別："+str(m_type)+"\n"
-        +"項目名稱："+str(item)+"\n"+"金額是$"+str(money)+"元"+"\n"+"另外還備註是："+str(keep)
+        message="你於"+date+"記了一筆"+m_class+"\n項目類別："+m_type
+        +"項目名稱："+item+"金額是$"+money+"元"+"另外還備註是："+keep
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template("./liff.html")
 
