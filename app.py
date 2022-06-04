@@ -39,6 +39,8 @@ handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
 
 #============LIFF API=================
 liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
+user_id=""
+
 
 try:
     now_LIFF_APP_number = len(liff_api.get())
@@ -63,11 +65,8 @@ def index():
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
         write_one_data(m_class,date,m_type,item,money,keep)
-        #return Message
+        line_bot_api.push_message(user_id,TextSendMessage(text='Hello World!'))
     return render_template("./liff.html")
-
-def get_token(token):
-    return token
 
     
 # 監聽所有來自 /callback 的 Post Request
@@ -90,6 +89,9 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
+    def get_userid():
+        user_id=event.source.user_id
+        return user_id
     if '查看功能' ==msg:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
