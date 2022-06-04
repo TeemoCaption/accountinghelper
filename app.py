@@ -59,13 +59,15 @@ def index():
     if request.method=="POST":
         m_class=request.form.get('class')
         date=request.form.get('date')
-        m_type=request.form.get('type')
+        m_type=request.form.get('type').replace('T','')
         item=request.form.get('item')
         money=request.form.get('money')
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
         write_one_data(m_class,date,m_type,item,money,keep)
-        line_bot_api.reply_message(user_id,TextSendMessage(text='Hello World!'))
+        message="你於"+date+"記了一筆"+m_class+"\n"+"項目類別："+m_type+"\n"
+        +"項目名稱："+item+"\n"+"金額是$"+money+"元"+"\n"+"另外還備註是："+keep
+        line_bot_api.push_message(user_id,TextSendMessage(text=money))
     return render_template("./liff.html")
 
     
@@ -90,7 +92,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     global user_id
-    user_id=event.reply_token
+    user_id=event.source.user_id
     if '查看功能' ==msg:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
