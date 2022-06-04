@@ -66,7 +66,7 @@ def index():
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
         write_one_data(m_class,date,m_type,item,money,keep)
         message="你於"+date+"記了一筆"+m_class+"\n項目類別："+m_type+"\n項目名稱："+item+"\n金額是$"+money+"元"+"\n另外還備註是："+keep
-        line_bot_api.reply_message(user_id,TextSendMessage(text=message))
+        line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template("./liff.html")
 
     
@@ -91,7 +91,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     global user_id
-    user_id=event.reply_token
+    user_id=event.source.user_id
     if '查看功能' ==msg:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
