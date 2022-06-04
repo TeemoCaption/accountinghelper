@@ -52,7 +52,7 @@ def write_one_data(token,m_class,date,m_type,item,money,keep):
     col.insert_one(post)
 
     try:
-        line_bot_api.reply_message(send_token(), TextSendMessage(text='Hello World!'))
+        line_bot_api.reply_message(token, TextSendMessage(text='Hello World!'))
     except LineBotApiError as e:
         return "Error"
   

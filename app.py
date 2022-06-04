@@ -62,20 +62,14 @@ def index():
         money=request.form.get('money')
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
-        t=send_token()
-        write_one_data(t,m_class,date,m_type,item,money,keep)
+        write_one_data(token,m_class,date,m_type,item,money,keep)
         
         #return Message
     return render_template("./liff.html")
 
 def get_token(token):
-    global t    #設成全域變數
-    t=token
-    return t
+    return token
 
-def send_token():
-    token=get_token(t)
-    return get_token(token)
     
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -103,8 +97,10 @@ def handle_message(event):
     elif '我要記帳' ==msg:
         message=TextSendMessage(text="https://accountinghelper.herokuapp.com/")
         line_bot_api.reply_message(event.reply_token, message)
-        global t
         t=get_token(event.reply_token)
+        global token
+        token=t
+        
     elif '最新合作廠商'  == msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
