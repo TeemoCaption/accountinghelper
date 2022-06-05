@@ -59,7 +59,7 @@ def index():
     if request.method=="POST":
         m_class=request.form.get('class')
         date=request.form.get('date')
-        m_type=request.form.get('type').replace('T','')
+        m_type=request.form.get('type')
         item=request.form.get('item')
         money=request.form.get('money')
         keep=request.form.get('keep')
