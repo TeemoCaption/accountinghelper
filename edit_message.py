@@ -3,6 +3,7 @@ from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
+
 def select_date():
     content={
         "type": "carousel",
@@ -40,8 +41,8 @@ def select_date():
                     "style": "primary",
                     "action": {
                         "type":"datetimepicker",
-                        "label":"Select date",
-                        "data":"storeId=12345",
+                        "label":"點我選擇日期",
+                        "data":"Hello World",
                         "mode":"datetime",
                         "initial":"2017-12-25t00:00",
                         "max":"2018-01-24t23:59",
