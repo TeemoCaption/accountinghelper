@@ -61,7 +61,7 @@ def index():
         date=str(request.form.get('date')).replace('T',' ')
         m_type=request.form.get('type')
         item=request.form.get('item')
-        money=int(request.form.get('money'))
+        money=request.form.get('money')
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
         write_one_data(m_class,date,m_type,item,money,keep)
