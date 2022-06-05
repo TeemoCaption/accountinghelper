@@ -115,7 +115,7 @@ def handle_message(event):
     elif '圖片畫廊' == msg:
         message = test()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '修改記帳' == msg:
+    elif '修改紀錄' == msg:
         message=select_date()
         line_bot_api.reply_message(event.reply_token, message)
     #elif '功能列表' in msg:
