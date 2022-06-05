@@ -42,6 +42,7 @@ def dicMemberCheck(key, dicObj):
 
 def write_one_data(m_class,date,m_type,item,money,keep):        
     date=str(date).replace('T',' ')
+    money=int(money)
     post={
           "class":m_class,
           "date":date,
