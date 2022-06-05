@@ -1,6 +1,4 @@
 #這些是LINE官方開放的套件組合透過import來套用這個檔案上
-from datetime import date
-from datetime import datetime
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
@@ -27,7 +25,7 @@ def select_date():
                     {
                         "type": "text",
                         "text": "你要修改哪一天的記帳紀錄?",
-                        "wrap": true,
+                        "wrap": True,
                         "weight": "bold",
                         "size": "xl"
                     }
