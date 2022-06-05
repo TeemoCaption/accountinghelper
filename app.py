@@ -64,8 +64,9 @@ def index():
         item=request.form.get('item')
         money=request.form.get('money')
         keep=request.form.get('keep')
+        user=user_id
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
-        write_one_data(m_class,date,m_type,item,money,keep)
+        write_one_data(user,m_class,date,m_type,item,money,keep)
         message="你於"+date+"記了一筆"+m_class+"\n項目類別："+m_type+"\n項目名稱："+item+"\n金額是$"+money+"元"+"\n備註："+keep
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template("./liff.html")

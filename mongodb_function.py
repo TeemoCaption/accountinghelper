@@ -40,16 +40,17 @@ def dicMemberCheck(key, dicObj):
 
 #寫入資料data是dictionary
 
-def write_one_data(m_class,date,m_type,item,money,keep):        
+def write_one_data(user,m_class,date,m_type,item,money,keep):        
     date=str(date).replace('T',' ')
     money=int(money)
     post={
-          "class":m_class,
-          "date":date,
-          "type":m_type,
-          "item":item,
-          "money":money,
-          "keep":keep
+        "user_id": user,
+        "class":m_class,
+        "date":date,
+        "type":m_type,
+        "item":item,
+        "money":money,
+        "keep":keep
     }
     col.insert_one(post)
   
