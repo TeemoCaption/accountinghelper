@@ -40,8 +40,7 @@ def dicMemberCheck(key, dicObj):
 
 #寫入資料data是dictionary
 
-def write_one_data(m_class,date,m_type,item,money,keep):
-    data=str(data).replace('T',' ')
+def write_one_data(m_class,date,m_type,item,money,keep):        
     post={
           "class":m_class,
           "date":date,
