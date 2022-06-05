@@ -6,7 +6,7 @@ from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
 def select_date():
-    message=DatetimePickerAction(
+    message=DatetimePickerTemplateAction(
         label="欲查詢日期?",
         mode=datetime,
         initial=date.today()+"t00:00",
