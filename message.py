@@ -11,6 +11,8 @@ def button_reply():
         quick_reply=QuickReply(
             items=[
                 QuickReplyButton(action=MessageAction(label="我要記帳",text="我要記帳")),
+                QuickReplyButton(action=MessageAction(label="查詢紀錄",text="查詢紀錄")),
+                QuickReplyButton(action=MessageAction(label="修改紀錄",text="修改紀錄")),
                 QuickReplyButton(action=MessageAction(label="最新合作廠商",text="最新合作廠商")),
                 QuickReplyButton(action=MessageAction(label="最新活動訊息",text="最新活動訊息")),
                 QuickReplyButton(action=MessageAction(label="註冊會員",text="註冊會員")),

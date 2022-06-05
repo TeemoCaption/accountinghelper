@@ -21,6 +21,7 @@ from message import *
 from new import *
 from Function import *
 from mongodb_function import *
+from edit_message import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
@@ -113,6 +114,11 @@ def handle_message(event):
     elif '圖片畫廊' == msg:
         message = test()
         line_bot_api.reply_message(event.reply_token, message)
+    elif '修改記帳' == msg:
+        message=select_date()
+        date=message
+    elif date==msg:
+        line_bot_api.reply_message(event.reply_token, "好的")
     #elif '功能列表' in msg:
         #message = function_list()
         #line_bot_api.reply_message(event.reply_token, message)
