@@ -128,9 +128,10 @@ def handle_message(event):
         #ImageSendMessage:傳送圖片
 
 @handler.add(PostbackEvent)
-def handle_message(event):
-    if event.postback.data == 'editdate':
-        message=event.postback.params
+def send_actionMessage(event):
+    data=event.postback.data
+    if data =="editdate":
+        message=event.postback.params.datetime
         line_bot_api.reply_message(event.reply_token, message)
 
 
