@@ -43,7 +43,7 @@ def select_date():
                         "type":"datetimepicker",
                         "label":"點我選擇日期",
                         "data":"editdate",
-                        "mode":"datetime",
+                        "mode":"date",
                         "initial":"2017-12-25t00:00",
                         "max":"2018-01-24t23:59",
                         "min":"2017-12-25t00:00"
