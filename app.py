@@ -130,10 +130,10 @@ def handle_message(event):
 @handler.add(PostbackEvent)
 def get_dateData(event):
     data=event.postback.data
-    date=event.postback.params
+    date=str(event.postback.params.datetime)
     if data=="editdate":
         reply_message=TextMessage(text=date)
-        line_bot_api.reply_message(event.reply_token, reply_message)
+        line_bot_api.reply_message(event.source.user_id, reply_message)
     
     
 
