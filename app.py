@@ -128,7 +128,7 @@ def handle_message(event):
         #ImageSendMessage:傳送圖片
 
 @handler.add(PostbackEvent)
-def handle_message(event):
+def get_dateData(event):
     data=event.postback.data
     if data == 'editdate':
         message=event.postback.params.datetime
