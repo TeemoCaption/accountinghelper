@@ -132,7 +132,7 @@ def get_dateData(event):
     data=event.postback.data
     if data == 'editdate':
         date=event.postback.params.datetime
-        text_message = TextSendMessage(text=date)
+        text_message = TextSendMessage(text="2222")
         line_bot_api.push_message(event.source.user_id, text_message)
 
 
