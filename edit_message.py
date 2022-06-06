@@ -44,7 +44,7 @@ def select_date():
                         "label":"點我選擇日期",
                         "data":"storeId=12345",
                         "mode":"datetime",
-                        "initial":"full-date",
+                        "initial":"2017-12-25t00:00",
                         "max":"2018-01-24t23:59",
                         "min":"2017-12-25t00:00"
                     }
