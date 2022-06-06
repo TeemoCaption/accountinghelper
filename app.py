@@ -131,9 +131,9 @@ def handle_message(event):
 def get_dateData(event):
     data=event.postback.data
     if data == 'editdate':
-        date=event.postback.params
+        date=event.postback.params.datetime
         text_message = TextSendMessage(text=date)
-        line_bot_api.reply_message(event.reply_token, text_message)
+        line_bot_api.push_message(event.source.user_id, text_message)
 
 
 @handler.add(MemberJoinedEvent)
