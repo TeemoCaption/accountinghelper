@@ -44,9 +44,8 @@ def select_date():
                         "label":"點我選擇日期",
                         "data":"editdate",
                         "mode":"date",
-                        "initial":"2017-12-25",
-                        "max":"2018-01-24",
-                        "min":"2017-12-25"
+                        "max":"2100-12-31",
+                        "min":"1900-01-01"
                     }
                 }
                 ]
