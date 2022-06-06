@@ -42,7 +42,7 @@ def select_date():
                     "action": {
                         "type":"datetimepicker",
                         "label":"點我選擇日期",
-                        "data":"storeId=12345",
+                        "data":"editdate",
                         "mode":"datetime",
                         "initial":"2017-12-25t00:00",
                         "max":"2018-01-24t23:59",
