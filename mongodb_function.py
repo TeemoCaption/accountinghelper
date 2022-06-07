@@ -61,11 +61,11 @@ def write_many_datas(data):
     col.insert_many(data)
 
 #讀取所有符合日期的資料
-def read_date(date):
+def read_date(user,date):
     data_list = {}
     target_date="^"+str(date)
     i=1
-    for data in col.find({'date':{'$regex':target_date}}):   # $regex正規表達式
+    for data in col.find({'user_id': user,'date':{'$regex':target_date}}):   # $regex正規表達式
         dataNo="n"+str(i)
         data_list.update({dataNo:{"class":data['class']}})
         i+=1

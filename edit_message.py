@@ -60,6 +60,6 @@ def select_date():
     return message
 
 
-def find_date(date):
-    message=read_date(date)
+def find_date(user,date):
+    message = read_date(user,date)
     return message

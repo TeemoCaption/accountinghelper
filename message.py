@@ -101,7 +101,6 @@ def buttons_message():
 
 #TemplateSendMessage - ConfirmTemplate(確認介面訊息)
 def Confirm_Template():
-
     message = TemplateSendMessage(
         alt_text='是否註冊成為會員？',
         template=ConfirmTemplate(
