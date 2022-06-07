@@ -60,7 +60,7 @@ def select_date():
     return message
 
 
-def find_date(user,date):
+def find_date():
     message = TemplateSendMessage(
         alt_text='一則旋轉木馬按鈕訊息',
         template=CarouselTemplate(
