@@ -68,7 +68,7 @@ def find_date(user,date):
         alt_text='符合的紀錄',
         template=ButtonsTemplate(
             thumbnail_image_url="https://pic2.zhimg.com/v2-de4b8114e8408d5265503c8b41f59f85_b.jpg",
-            title="收入支出：%s \n 類別：%s \n 項目：%s".format(data_dict[t]['class'],data_dict[t]['type'],data_dict[t]["item"]),
+            title="收入支出："+data_dict[t]['class']+ "\n"+ "類別："+data_dict[t]['type'] + "\n"+ "項目:"+data_dict[t]['item'],
             text="金額："+data_dict[t]["money"],
             actions=[
                 URITemplateAction(
