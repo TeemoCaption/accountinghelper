@@ -2,7 +2,8 @@
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
-from mongodb_function import *
+#引入檔案
+from mongodb_function import read_date
 
 
 def select_date():
