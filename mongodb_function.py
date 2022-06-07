@@ -60,13 +60,16 @@ def write_one_data(user,m_class,date,m_type,item,money,keep):
 def write_many_datas(data):
     col.insert_many(data)
 
-#讀取所有LINE的webhook event紀錄資料
-def read_many_datas():
-    data_list = []
-    for data in col.find():
-        data_list.append(str(data))
+#讀取所有符合日期的資料
+def read_date(date):
+    data_list = {}
+    target_date="^"+str(date)
+    i=1
+    for data in col.find({'date':{'$regex':target_date}}):   # $regex正規表達式
+        dataNo="n"+str(i)
+        data_list[dataNo]['class']=data['class']
+        i+=1
 
-    print(data_list)
     return data_list
 
 #讀取LINE的對話紀錄資料

@@ -2,6 +2,7 @@
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
+from mongodb_function import *
 
 
 def select_date():
@@ -55,4 +56,9 @@ def select_date():
     }
     
     message=FlexSendMessage(alt_text='修改紀錄-選擇日期',contents=content)
+    return message
+
+
+def find_date(date):
+    message=read_date(date)
     return message
