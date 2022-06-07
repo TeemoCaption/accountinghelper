@@ -84,6 +84,3 @@ def find_date(user,date):
                 )
             )
         return message
-    else:
-        message=""
-        return message
