@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from cgitb import handler
 from os import abort
 from flask import Flask, jsonify, request, abort,render_template
@@ -62,12 +63,12 @@ def write_many_datas(data):
 
 #讀取所有符合日期的資料
 def read_date(user,date):
-    data_list = {}
+    data_list = NULL
     target_date="^"+str(date)
     i=1
     for data in col.find({'user_id': user,'date':{'$regex':target_date}}):   # $regex正規表達式
         dataNo="n"+str(i)
-        data_list.update({dataNo:{"item":data['item']}})
+        data_list.update({"item":data['item']})
         i+=1
     return str(data_list)
 
