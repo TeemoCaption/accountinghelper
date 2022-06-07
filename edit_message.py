@@ -63,24 +63,20 @@ def select_date():
 
 def find_date(user,date):
     data_dict=read_date(user,date)
-    message=[]
-    if(len(data_dict.keys())>0):
-        for i in range(len(data_dict.keys())):
-            t="n"+str(i+1)
-            message.append(
-                TemplateSendMessage(
-                    alt_text='符合的紀錄',
-                    template=ButtonsTemplate(
-                        thumbnail_image_url="https://pic2.zhimg.com/v2-de4b8114e8408d5265503c8b41f59f85_b.jpg",
-                        title="收入支出：%s \n 類別：%s \n 項目：%s".format(data_dict[t]['class'],data_dict[t]['type'],data_dict[t]["item"]),
-                        text="金額："+data_dict[t]["money"],
-                        actions=[
-                            URITemplateAction(
-                                label="點我修改紀錄",
-                                uri=""
-                            )
-                        ]
-                    )
+    t="n1"
+    message=TemplateSendMessage(
+        alt_text='符合的紀錄',
+        template=ButtonsTemplate(
+            thumbnail_image_url="https://pic2.zhimg.com/v2-de4b8114e8408d5265503c8b41f59f85_b.jpg",
+            title="收入支出：%s \n 類別：%s \n 項目：%s".format(data_dict[t]['class'],data_dict[t]['type'],data_dict[t]["item"]),
+            text="金額："+data_dict[t]["money"],
+            actions=[
+                URITemplateAction(
+                    label="點我修改紀錄",
+                    uri=""
                 )
-            )
-        return message
+            ]
+        )
+    )        
+                
+    return message
