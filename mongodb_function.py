@@ -2,7 +2,7 @@ from cgitb import handler
 from os import abort
 from flask import Flask, jsonify, request, abort,render_template
 import pymongo
-from app import *
+#from app import *
 #=======LineBot相關套件引入==========
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
