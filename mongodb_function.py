@@ -69,7 +69,7 @@ def read_date(user,date):
         dataNo="n"+str(i)
         data_list.update({dataNo:{"class":data['class'],"type":data['type'],"item":data['item'],"money":data['money'],"keep":data['keep']}})
         i+=1
-    return str(data_list)
+    return data_list
 
 #讀取LINE的對話紀錄資料
 def read_chat_records():

@@ -1,4 +1,5 @@
 #這些是LINE官方開放的套件組合透過import來套用這個檔案上
+from typing import KeysView
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
@@ -60,45 +61,26 @@ def select_date():
     return message
 
 
-def find_date():
-    message = TemplateSendMessage(
-        alt_text='一則旋轉木馬按鈕訊息',
-        template=CarouselTemplate(
-            columns=[
-                CarouselColumn(
-                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Number_1_in_green_rounded_square.svg/200px-Number_1_in_green_rounded_square.svg.png',
-                    title='這是第一塊模板',
-                    text='一個模板可以有三個按鈕',
-                    actions=[
-                        URITemplateAction(
-                            label='進入1的網頁',
-                            uri='https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Number_1_in_green_rounded_square.svg/200px-Number_1_in_green_rounded_square.svg.png'
-                        )
-                    ]
-                ),
-                CarouselColumn(
-                    thumbnail_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuo7n2_HNSFuT3T7Z9PUZmn1SDM6G6-iXfRC3FxdGTj7X1Wr0RzA',
-                    title='這是第二塊模板',
-                    text='副標題可以自己改',
-                    actions=[
-                        URITemplateAction(
-                            label='進入2的網頁',
-                            uri='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Number_2_in_light_blue_rounded_square.svg/200px-Number_2_in_light_blue_rounded_square.svg.png'
-                        )
-                    ]
-                ),
-                CarouselColumn(
-                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Number_3_in_yellow_rounded_square.svg/200px-Number_3_in_yellow_rounded_square.svg.png',
-                    title='這是第三個模塊',
-                    text='最多可以放十個',
-                    actions=[
-                        URITemplateAction(
-                            label='uri2',
-                            uri='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Number_3_in_yellow_rounded_square.svg/200px-Number_3_in_yellow_rounded_square.svg.png'
-                        )
-                    ]
+def find_date(user,date):
+    data_dict=read_date(user,date)
+    message=[]
+    if(len(data_dict.keys())>0):
+        for i in range(len(data_dict.keys())):
+            t="n"+str(i+1)
+            message.append(
+                TemplateSendMessage(
+                    alt_text='符合的紀錄',
+                    template=ButtonsTemplate(
+                        thumbnail_image_url="https://pic2.zhimg.com/v2-de4b8114e8408d5265503c8b41f59f85_b.jpg",
+                        title="收入支出：%s \n 類別：%s \n 項目：%s".format(data_dict[t]['class'],data_dict[t]['type'],data_dict[t]["item"]),
+                        text="金額："+data_dict[t]["money"],
+                        actions=[
+                            URITemplateAction(
+                                label="點我修改紀錄",
+                                uri=""
+                            )
+                        ]
+                    )
                 )
-            ]
-        )
-    )
+            )
     return message
