@@ -60,5 +60,5 @@ def select_date():
 
 
 def find_date(date):
-    message=read_date(date)
+    message=TextSendMessage(text=read_date(date))
     return message
