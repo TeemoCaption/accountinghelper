@@ -62,12 +62,14 @@ def write_many_datas(data):
 
 #讀取所有符合日期的資料
 def read_date(user,date):
-    data_list = []
     target_date="^"+str(date)
     i=0
     for data in col.find({'user_id': user,'date':{'$regex':target_date}}):   # $regex正規表達式
-        data_list[i].append([data['class'],data['type'],data['item'],data['money'],data['keep']])
         i+=1
+    data_list=[[] for d in range(i)]
+    for data in col.find({'user_id': user,'date':{'$regex':target_date}}):   # $regex正規表達式
+        data_list[0].append(data['class'],data['type'],data['item'],data['money'],data['keep'])
+        
     return data_list
 
 #讀取LINE的對話紀錄資料
