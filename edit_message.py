@@ -5,7 +5,6 @@ from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 #引入檔案
 from mongodb_function import *
-import json
 
 
 def select_date():
@@ -211,7 +210,7 @@ def find_date(user,date):
             }
             }
         }
-        bubbles.append(json.dump(bubble))
+        bubbles.append(bubble)
         i+=1
         
     contents['contents']=bubbles  
