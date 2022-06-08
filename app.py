@@ -135,7 +135,7 @@ def get_dateData(event):
     message=[]
     if data=="editdate":
         message.append(find_date(user,date))
-        line_bot_api.reply_message(event.reply_token, messages=)
+        line_bot_api.reply_message(event.reply_token, message)
     
     
 
