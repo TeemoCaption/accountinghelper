@@ -68,7 +68,6 @@ def find_date(user,date):
     bubbles=[]
     i=1
     for data in data_dict:
-        t="n"+str(i)
         bubble={
             {
             "type": "bubble",
@@ -89,7 +88,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": data[t]['class'],
+                    "text": data[i]['class'],
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -113,7 +112,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[t]['type'],
+                            "text": data[i]['type'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -135,7 +134,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[t]['item'],
+                            "text": data[i]['item'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -157,7 +156,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[t]['money'],
+                            "text": data[i]['money'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -179,7 +178,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[t]['keep'],
+                            "text": data[i]['keep'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
