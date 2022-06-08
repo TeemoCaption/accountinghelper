@@ -62,21 +62,158 @@ def select_date():
 
 
 def find_date(user,date):
+    contents=dict()
+    contents['type']='carousel'
     data_dict=read_date(user,date)
-    t="n1"
-    message=TemplateSendMessage(
-        alt_text='符合的紀錄',
-        template=ButtonsTemplate(
-            thumbnail_image_url="https://pic2.zhimg.com/v2-de4b8114e8408d5265503c8b41f59f85_b.jpg",
-            title="收入支出："+data_dict[t]['class']+ "\n"+ "類別："+data_dict[t]['type'] + "\n"+ "項目:"+data_dict[t]['item'],
-            text="金額："+data_dict[t]["money"],
-            actions=[
-                URITemplateAction(
-                    label="點我修改紀錄",
-                    uri=""
-                )
-            ]
-        )
-    )        
-                
+    bubbles=[]
+    i=1
+    for data in data_dict:
+        t="n"+str(i)
+        bubble={
+            {
+            "type": "bubble",
+            "hero": {
+                "type": "image",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                "type": "uri",
+                "uri": "http://linecorp.com/"
+                }
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": data[t]['class'],
+                    "weight": "bold",
+                    "size": "xl"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "lg",
+                    "spacing": "sm",
+                    "contents": [
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                        {
+                            "type": "text",
+                            "text": "類別：",
+                            "color": "#aaaaaa",
+                            "size": "sm",
+                            "flex": 1
+                        },
+                        {
+                            "type": "text",
+                            "text": data[t]['type'],
+                            "wrap": True,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 5
+                        }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                        {
+                            "type": "text",
+                            "text": "項目：",
+                            "color": "#aaaaaa",
+                            "size": "sm",
+                            "flex": 1
+                        },
+                        {
+                            "type": "text",
+                            "text": data[t]['item'],
+                            "wrap": True,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 5
+                        }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                        {
+                            "type": "text",
+                            "text": "金額：",
+                            "color": "#aaaaaa",
+                            "size": "sm",
+                            "flex": 1
+                        },
+                        {
+                            "type": "text",
+                            "text": data[t]['money'],
+                            "wrap": True,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 5
+                        }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                        {
+                            "type": "text",
+                            "text": "備註：",
+                            "color": "#aaaaaa",
+                            "size": "sm",
+                            "flex": 1
+                        },
+                        {
+                            "type": "text",
+                            "text": data[t]['keep'],
+                            "wrap": True,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 5
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                {
+                    "type": "button",
+                    "style": "link",
+                    "height": "sm",
+                    "action": {
+                    "type": "uri",
+                    "label": "修改該筆紀錄",
+                    "uri": "https://linecorp.com"
+                    }
+                }
+                ],
+                "flex": 0
+            }
+            }
+        }
+        bubbles.append(bubble)
+        i+=1
+        
+    contents['contents']=bubbles  
+    message=FlexSendMessage(alt_text='工作進度',contents=contents)          
     return message
