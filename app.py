@@ -131,9 +131,9 @@ def handle_message(event):
 def get_dateData(event):
     data=event.postback.data
     date=event.postback.params['date']
-    #user=event.source.user_id
+    user=event.source.user_id
     if data=="editdate":
-        msg_list=find_date(date)
+        msg_list=find_date(user,date)
         for i in msg_list:
             line_bot_api.reply_message(event.reply_token, i)
     
