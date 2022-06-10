@@ -117,7 +117,24 @@
         liff.closeWindow();
     }
 
+    function liff_isLoggedIn() {
+        var isLoggedIn = liff.isLoggedIn();
+        if (isLoggedIn != true) {
+            alert("未登入LINE");
+            liff.login({
+                redirectUri: "https://maso-personal.herokuapp.com/",
+            });
+        }
+    }
+
+    function liff_getDecodedIDToken() {
+        var DecodedIDToken = JSON.stringify(liff.getDecodedIDToken());
+        alert(DecodedIDToken);
+    }
+
     $("#btnsubmit").click(function(e) {
+        liff_isLoggedIn();
+        liff_getDecodedIDToken();
         var date = document.querySelector('input[type="datetime-local"]').value;
         var m_class = $('input[name="drone"]:checked').val()
         var m_type = $("#m_type").val();
@@ -126,7 +143,6 @@
         var keep = $("#inputkeep").val();
 
         if (item != "" && money != "" && date != "") {
-            alert("記帳成功!!!")
             $.ajax({
                 type: "POST",
                 url: "/",
