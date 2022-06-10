@@ -119,14 +119,14 @@
 
     function liff_login() {
         liff.login({
-            redirectUri: "https://maso-personal.herokuapp.com/",
+            redirectUri: "https://keepspending.herokuapp.com/",
         });
     }
 
     function liff_isLoggedIn() {
         var isLoggedIn = liff.isLoggedIn();
         if (isLoggedIn != true) {
-            liff_login();
+            alert("未登入LINE");
         } else {
             alert("已登入LINE");
         }
@@ -138,8 +138,8 @@
     }
 
     $("#btnsubmit").click(function(e) {
+        liff_login();
         liff_isLoggedIn();
-        liff_getDecodedIDToken();
         var date = document.querySelector('input[type="datetime-local"]').value;
         var m_class = $('input[name="drone"]:checked').val()
         var m_type = $("#m_type").val();
