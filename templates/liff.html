@@ -117,19 +117,19 @@
         liff.closeWindow();
     }
 
-    function liff_isLoggedIn() {
-        var isLoggedIn = liff.isLoggedIn();
-        if (isLoggedIn != true) {
-            liff_login()
-        } else {
-            alert("已登入LINE");
-        }
-    }
-
     function liff_login() {
         liff.login({
             redirectUri: "https://maso-personal.herokuapp.com/",
         });
+    }
+
+    function liff_isLoggedIn() {
+        var isLoggedIn = liff.isLoggedIn();
+        if (isLoggedIn != true) {
+            liff_login();
+        } else {
+            alert("已登入LINE");
+        }
     }
 
     function liff_getDecodedIDToken() {
