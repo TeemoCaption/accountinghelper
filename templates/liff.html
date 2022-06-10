@@ -132,6 +132,8 @@
 
         if (item != "" && money != "" && date != "") {
             alert("記帳成功!!!")
+            liff_closeWindow();
+
             $.ajax({
                 type: "POST",
                 url: "/",
