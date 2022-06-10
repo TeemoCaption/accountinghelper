@@ -96,7 +96,7 @@ def handle_message(event):
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
     elif '我要記帳' ==msg:
-        message=TextSendMessage(text="https://accountinghelper.herokuapp.com/")
+        message=TextSendMessage(text="https://keepspending.herokuapp.com/")
         line_bot_api.reply_message(event.reply_token, message)
     elif '最新合作廠商'  == msg:
         message = imagemap_message()
