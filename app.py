@@ -40,7 +40,6 @@ handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
 
 #============LIFF API=================
 liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
-user_id=""
 
 
 try:
@@ -67,7 +66,7 @@ def index():
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
         write_one_data(user_id,m_class,date,m_type,item,money,keep)
         message="你於"+date+"記了一筆"+m_class+"\n項目類別："+m_type+"\n項目名稱："+item+"\n金額是$"+money+"元"+"\n備註："+keep
-        line_bot_api.push_message(user,TextSendMessage(text=message))
+        line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template("./liff.html")
 
     
