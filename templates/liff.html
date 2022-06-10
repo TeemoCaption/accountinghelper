@@ -133,6 +133,7 @@
         var keep = $("#inputkeep").val();
 
         if (item != "" && money != "" && date != "") {
+            liff_closeWindow();
             $.ajax({
                 type: "POST",
                 url: "/",
@@ -151,7 +152,7 @@
                     console.log(error);
                 }
             });
-            liff_closeWindow();
+
         }
 
     });
