@@ -66,7 +66,7 @@ def read_date(user,date):
     i=0
     for data in col.find({'user_id': user,'date':{'$regex':target_date}}):   # $regex正規表達式
         i+=1
-    data_list=[[] for i in range(i)]
+    data_list=[[]*i]*5
     n=0
     for data in col.find({'user_id': user,'date':{'$regex':target_date}}):   # $regex正規表達式
         data_list[n].append([data['class'],data['type'],data['item'],data['money'],data['keep']])
