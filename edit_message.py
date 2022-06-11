@@ -69,6 +69,7 @@ def find_date(user,date):
     bubbles=[]
     i=0
     for data in data_list:
+        a=str(i)
         bubble={
             "type": "bubble",
             "hero": {
@@ -88,7 +89,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": data[i]['class'],
+                    "text": data[a]['class'],
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -112,7 +113,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i]['type'],
+                            "text": data[a]['type'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -134,7 +135,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i]['item'],
+                            "text": data[a]['item'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -156,7 +157,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i]['money'],
+                            "text": data[a]['money'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -178,7 +179,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i]['keep'],
+                            "text": data[a]['keep'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
