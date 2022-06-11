@@ -5,6 +5,7 @@ from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 #引入檔案
 from mongodb_function import *
+from collections import defaultdict
 
 
 def select_date():
@@ -87,7 +88,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": data[i][0],
+                    "text": data[i]['class'],
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -111,7 +112,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i][1],
+                            "text": data[i]['type'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -133,7 +134,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i][2],
+                            "text": data[i]['item'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -155,7 +156,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i][3],
+                            "text": data[i]['money'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -177,7 +178,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i][4],
+                            "text": data[i]['keep'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
