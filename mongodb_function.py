@@ -68,12 +68,8 @@ def read_date(user,date):
     n=0
     for data in col.find({'user_id': user,'date':{'$regex':target_date}}):   # $regex正規表達式
         a=str(n)
-        dict_list[a]['class']=data['class']
-        dict_list[a]['type']=data['type']
-        dict_list[a]['item']=data['item']
-        dict_list[a]['money']=data['money']
-        dict_list[a]['keep']=data['keep']
-        n+=1
+        dict_list[a]=data
+        
     return dict_list    
 
 #讀取LINE的對話紀錄資料
