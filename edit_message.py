@@ -65,7 +65,7 @@ def select_date():
 def find_date(user,date):
     contents=dict()
     contents['type']='carousel'
-    data_list=read_date(user,date)
+    data=read_date(user,date)
     bubble={
         "type": "bubble",
         "hero": {
