@@ -64,7 +64,7 @@ def write_many_datas(data):
 #讀取所有符合日期的資料
 def read_date(user,date):
     target_date="^"+str(date)
-    dict_list=dict()
+    dict_list=""
     n=0
     dict_list=col.find({'user_id': user,'date':{'$regex':target_date}})  # $regex正規表達式
         
