@@ -212,5 +212,5 @@ def find_date(user,date):
         bubbles.append(bubble)
 
     contents['contents']=bubbles
-    message=TextSendMessage(alt_text="這是flex templete",contents=contents)          
+    message=FlexSendMessage(alt_text="這是flex templete",contents=contents)          
     return message
