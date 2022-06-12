@@ -87,7 +87,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": data[i]['class'],
+                    "text": data_dict[i]['class'],
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -111,7 +111,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i]['type'],
+                            "text": data_dict[i]['type'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -133,7 +133,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i]['item'],
+                            "text": data_dict[i]['item'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -155,7 +155,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i]['money'],
+                            "text": data_dict[i]['money'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -177,7 +177,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i]['keep'],
+                            "text": data_dict[i]['keep'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
