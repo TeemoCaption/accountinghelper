@@ -68,11 +68,6 @@ def find_date(user,date):
     datas=read_date(user,date)
     bubbles=[]
     for data in datas:
-        d_class=data[0]
-        d_type=data[1]
-        d_item=data[2]
-        money=data[3]
-        keep=data[4]
         bubble={
             "type": "bubble",
             "hero": {
@@ -92,7 +87,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": str(d_class),
+                    "text": str(data[0]),
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -116,7 +111,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(d_type),
+                            "text": str(data[1]),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -138,7 +133,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(d_item),
+                            "text": str(data[2]),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -160,7 +155,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(money),
+                            "text": str(data[3]),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -182,7 +177,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(keep),
+                            "text": str(data[4]),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
