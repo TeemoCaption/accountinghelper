@@ -209,5 +209,5 @@ def find_date(user,date):
     }
     bubbles.append(bubble)
     contents['contents']=bubbles
-    message=FlexSendMessage(alt_text='工作進度',contents=contents)          
+    message=TextSendMessage(text=data)          
     return message
