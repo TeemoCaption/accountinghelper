@@ -67,7 +67,7 @@ def find_date(user,date):
     contents['type']='carousel'
     data_dict=read_date(user,date)
     bubbles=[]
-    for i in range(len(data_dict)):
+    for data in len(data_dict):
         bubble={
             "type": "bubble",
             "hero": {
@@ -87,7 +87,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": str(len(data[i])),
+                    "text": str(len(data)),
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -111,7 +111,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(len(data[i])),
+                            "text": str(len(data)),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -133,7 +133,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(len(data[i])),
+                            "text": str(len(data)),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -155,7 +155,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(len(data[i])),
+                            "text": str(len(data)),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -177,7 +177,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(len(data[i])),
+                            "text": str(len(data)),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
