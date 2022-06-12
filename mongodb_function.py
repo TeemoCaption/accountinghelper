@@ -67,7 +67,6 @@ def read_date(user,date):
     target_date="^"+str(date)
     data_list=[]
     for data in col.find({'user_id': user,'date':{'$regex':target_date}}):  # $regex正規表達式
-        a=str(n)
         data_list.append(data)
     return data_list
 
