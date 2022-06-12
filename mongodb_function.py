@@ -3,6 +3,7 @@ from os import abort
 from flask import Flask, jsonify, request, abort,render_template
 import pymongo
 from collections import defaultdict
+import json
 #from app import *
 #=======LineBot相關套件引入==========
 from linebot import LineBotApi
@@ -64,11 +65,9 @@ def write_many_datas(data):
 #讀取所有符合日期的資料
 def read_date(user,date):
     target_date="^"+str(date)
-    dict_list=""
     n=0
-    dict_list=str(col.find({'user_id': user,'date':{'$regex':target_date}}))  # $regex正規表達式
-        
-    return dict_list    
+    data=col.find({'user_id': user,'date':{'$regex':target_date}})  # $regex正規表達式
+    return data   
 
 #讀取LINE的對話紀錄資料
 def read_chat_records():
