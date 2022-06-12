@@ -67,8 +67,12 @@ def find_date(user,date):
     contents['type']='carousel'
     datas=read_date(user,date)
     bubbles=[]
-    i=0
-    while(i<len(datas)):
+    for data in datas:
+        d_class=data[0]
+        d_type=data[1]
+        d_item=data[2]
+        money=data[3]
+        keep=data[4]
         bubble={
             "type": "bubble",
             "hero": {
@@ -88,7 +92,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": str(data[i][0]),
+                    "text": str(d_class),
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -112,7 +116,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(data[i][1]),
+                            "text": str(d_type),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -134,7 +138,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(data[i][2]),
+                            "text": str(d_item),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -156,7 +160,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(data[i][3]),
+                            "text": str(money),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -178,7 +182,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(data[i][4]),
+                            "text": str(keep),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -210,7 +214,6 @@ def find_date(user,date):
             }
         }
         bubbles.append(bubble)
-        i+=1
 
     contents['contents']=bubbles
     message=FlexSendMessage(alt_text="這是flex templete",contents=contents)          
