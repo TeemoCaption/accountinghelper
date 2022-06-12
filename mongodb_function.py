@@ -66,9 +66,16 @@ def write_many_datas(data):
 def read_date(user,date):
     target_date="^"+str(date)
     n=0
-    json_data=col.find({'user_id': user,'date':{'$regex':target_date}})  # $regex正規表達式
-    data=json.loads(json_data)
-    return data   
+    data_dict = defaultdict(dict)
+    for data_json in col.find({'user_id': user,'date':{'$regex':target_date}}):  # $regex正規表達式
+        data=json.loads(data_json)
+        data_dict[n]['class']=data['class']
+        data_dict[n]['type']=data['type']
+        data_dict[n]['item']=data['item']
+        data_dict[n]['money']=data['money']
+        data_dict[n]['keep']=data['keep']
+        n+=1
+    return data_dict  
 
 #讀取LINE的對話紀錄資料
 def read_chat_records():
