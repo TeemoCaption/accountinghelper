@@ -66,6 +66,7 @@ def find_date(user,date):
     contents=dict()
     contents['type']='carousel'
     data=read_date(user,date)
+    bubbles=[]
     bubble={
         "type": "bubble",
         "hero": {
@@ -206,7 +207,7 @@ def find_date(user,date):
             "flex": 0
         }
     }
-        
-    contents['contents']=bubble
+    bubbles.append(bubble)
+    contents['contents']=bubbles
     message=FlexSendMessage(alt_text='工作進度',contents=contents)          
     return message
