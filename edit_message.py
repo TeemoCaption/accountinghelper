@@ -67,7 +67,6 @@ def find_date(user,date):
     contents['type']='carousel'
     data_list=read_date(user,date)
     bubbles=[]
-    i=0
     for data in data_list:
         bubble={
             "type": "bubble",
@@ -88,7 +87,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": str(data.values()),
+                    "text": data['class'],
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -112,7 +111,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(data.values()),
+                            "text": data['type'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -134,7 +133,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(data.values()),
+                            "text": data['item'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -156,7 +155,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(data.values()),
+                            "text": str(data['money']),
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -178,7 +177,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": str(data.values()),
+                            "text": data['keep'],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",

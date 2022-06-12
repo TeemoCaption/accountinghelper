@@ -66,9 +66,7 @@ def read_date(user,date):
     target_date="^"+str(date)
     dict_list=dict()
     n=0
-    for data in col.find({'user_id': user,'date':{'$regex':target_date}}):   # $regex正規表達式
-        a=str(n)
-        dict_list[a]=data
+    dict_list=col.find({'user_id': user,'date':{'$regex':target_date}})  # $regex正規表達式
         
     return dict_list    
 
