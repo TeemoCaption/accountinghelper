@@ -67,13 +67,12 @@ def read_date(user,date):
     target_date="^"+str(date)
     n=0
     data_dict = defaultdict(dict)
-    for data_json in col.find({'user_id': user,'date':{'$regex':target_date}}):  # $regex正規表達式
-        data=json.loads(str(data_json))
-        data_dict[n]['class']=data['class']
-        data_dict[n]['type']=data['type']
-        data_dict[n]['item']=data['item']
-        data_dict[n]['money']=data['money']
-        data_dict[n]['keep']=data['keep']
+    for data in col.find({'user_id': user,'date':{'$regex':target_date}}):  # $regex正規表達式
+        data_dict[n]=data['class']
+        data_dict[n]=data['type']
+        data_dict[n]=data['item']
+        data_dict[n]=data['money']
+        data_dict[n]=data['keep']
         n+=1
     return data_dict  
 
