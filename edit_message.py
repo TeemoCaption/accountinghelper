@@ -208,7 +208,6 @@ def find_date(user,date):
                 "flex": 0
             }
         }
-        i+=1
         bubbles.append(bubble)
 
     contents['contents']=bubbles
