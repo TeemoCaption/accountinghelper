@@ -72,7 +72,7 @@ def index():
 
 @app.route("/edit_data",methods=["GET","POST"])
 def edit_html():
-    render_template('./edit_data.html')
+    return render_template('./edit_data.html')
 
     
 # 監聽所有來自 /callback 的 Post Request
