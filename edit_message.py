@@ -87,7 +87,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": data[0][1],
+                    "text": data[i][0],
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -111,7 +111,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[0][1],
+                            "text": data[i][1],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -133,7 +133,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[0][1],
+                            "text": data[i][2],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -155,7 +155,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[0][1],
+                            "text": data[i][3],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -177,7 +177,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[0][1],
+                            "text": data[i][4],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
