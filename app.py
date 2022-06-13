@@ -73,7 +73,8 @@ def index():
 
 @app.route("/edit_data/<str:num>",methods=["GET","POST"])
 def edit_html(num):
-    edit_data=edit_list[num]
+    n=int(num)
+    edit_data=edit_list[n]
     return render_template('./edit_data.html',data=edit_data)
 
     
