@@ -71,7 +71,7 @@ def index():
     return render_template("./liff.html")
 
 
-@app.route("/edit_data/<int:num>",methods=["GET","POST"])
+@app.route("/edit_data/<num>",methods=["GET","POST"])
 def edit_html(num):
     n=int(num)
     edit_data=edit_list[n]
