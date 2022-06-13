@@ -71,9 +71,9 @@ def index():
     return render_template("./liff.html")
 
 
-@app.route("/edit_data",methods=["GET","POST"])
+@app.route("/edit_data/<int:num>",methods=["GET","POST"])
 def edit_html():
-    edit_data=edit_list
+    edit_data=edit_list[num]
     return render_template('./edit_data.html',data=edit_data)
 
     
@@ -140,7 +140,7 @@ def get_dateData(event):
     if data=="editdate":
         message=find_date(user,date)
         global edit_list
-        edit_list=find_date(user,date)
+        edit_list=read_date(user,date)
         line_bot_api.push_message(user, message)
     
     
