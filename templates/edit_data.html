@@ -2,14 +2,159 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改紀錄</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+
+
+    <style type="text/css">
+        * {
+            font-size: 20px;
+            font-family: "微軟正黑體";
+            color: black;
+        }
+        
+        html,
+        body {
+            background-color: #fdc5f5;
+            margin: 0px;
+            padding: 5px;
+        }
+        
+        form {
+            padding: 5px;
+            background-color: white;
+            -moz-box-shadow: 0 0 15px black;
+            box-shadow: 0 0 15px black;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>12345</h1>
+    <form>
+        <div class="mb-3">
+            <label>請選擇收入或支出：</label>
+            <br>
+            <input class="form-check-input" type="radio" id="income" value="收入" name="drone" checked>
+            <label class="form-check-label" for="income">收入</label>
+            <input class="form-check-input" type="radio" value="支出" id="expenditure" name="drone">
+            <label class="form-check-label" for="expenditure">支出</label>
+        </div>
+        <div class="mb-3">
+            <label for="m_time">選擇日期/時間：</label>
+            <input id="m_time" type="datetime-local" name="m_time" required>
+        </div>
+        <div class="mb-3">
+            <label for="m_type">選擇類別：</label>
+            <select class="form-select" aria-label="Default select example" id="m_type">
+                <optgroup label="收入">
+                    <option value="銀行卡" selected>銀行卡</option>
+                    <option value="生活費">生活費</option>
+                    <option value="出租">出租</option>
+                    <option value="捐贈">捐贈</option>
+                    <option value="股息">股息</option>
+                    <option value="退款">退款</option>
+                    <option value="薪水">薪水</option>
+                    <option value="買賣">買賣</option>
+                    <option value="獎金">獎金</option>
+                    <option value="優惠券">優惠券</option>
+                    <option value="其他">其他</option>
+                </optgroup>
+                <optgroup label="支出">
+                    <option value="飲食">飲食</option>
+                    <option value="日常用品">日常用品</option>
+                    <option value="交通">交通</option>
+                    <option value="居家">居家</option>
+                    <option value="汽機車">汽機車</option>
+                    <option value="娛樂">娛樂</option>
+                    <option value="醫療保健">醫療保健</option>
+                    <option value="教育">教育</option>
+                    <option value="稅">稅</option>
+                    <option value="電子產品">電子產品</option>
+                    <option value="保險">保險</option>
+                </optgroup>
+              </select>
+        </div>
+        <label class="form-label">項目名稱：</label>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="inputitem" required>
+        </div>
+        <label class="form-label">金額：</label>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="inputmoney" required>
+        </div>
+        <label class="form-label">備註：</label>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="inputkeep">
+        </div>
+        <button type="submit" class="btn btn-primary" id="btnsubmit">送出</button>
+    </form>
 </body>
+<script>
+    //==========================LIFF API初始化================================
+    $(document).ready(function() {
+        liff.init({
+            liffId: "1657173800-nQWeLeO7"
+        });
+    });
+    //==========================LIFF API初始化================================
+
+    function liff_openWindow() {
+        // window.location.replace("https://developers.line.biz/en/reference/liff/")
+        liff.openWindow({
+            url: "https://developers.line.biz/en/reference/liff/",
+            external: true,
+        });
+    }
+
+    function liff_closeWindow() {
+        liff.closeWindow();
+    }
+
+    function liff_getDecodedIDToken() {
+        var DecodedIDToken = JSON.stringify(liff.getDecodedIDToken());
+        alert(DecodedIDToken);
+    }
+
+    $("#btnsubmit").click(function(e) {
+        var date = document.querySelector('input[type="datetime-local"]').value;
+        var m_class = $('input[name="drone"]:checked').val()
+        var m_type = $("#m_type").val();
+        var item = $("#inputitem").val();
+        var money = $("#inputmoney").val();
+        var keep = $("#inputkeep").val();
+
+        if (item != "" && money != "" && date != "") {
+            alert("記帳成功!!!")
+
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: {
+                    "class": m_class,
+                    "date": date,
+                    "type": m_type,
+                    "item": item,
+                    "money": money,
+                    "keep": keep
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+
+        }
+
+    });
+</script>
 
 </html>
