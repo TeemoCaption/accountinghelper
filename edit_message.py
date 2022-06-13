@@ -66,8 +66,9 @@ def find_date(user,date):
     contents=dict()
     contents['type']='carousel'
     data=type(read_date(user,date))
+    datas=read_date(user,date)
     bubbles=[]
-    for i in range(len(data)):
+    for i in range(len(datas)):
         bubble={
             "type": "bubble",
             "hero": {
