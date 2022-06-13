@@ -41,6 +41,7 @@ handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
 #============LIFF API=================
 liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
 user_id=""
+edit_list=""
 
 try:
     now_LIFF_APP_number = len(liff_api.get())
@@ -72,7 +73,8 @@ def index():
 
 @app.route("/edit_data",methods=["GET","POST"])
 def edit_html():
-    return render_template('./edit_data.html')
+    edit_data=edit_list
+    return render_template('./edit_data.html',data=edit_data)
 
     
 # 監聽所有來自 /callback 的 Post Request
@@ -137,6 +139,8 @@ def get_dateData(event):
     message=[]
     if data=="editdate":
         message=find_date(user,date)
+        global edit_list
+        edit_list=find_date(user,date)
         line_bot_api.push_message(user, message)
     
     
