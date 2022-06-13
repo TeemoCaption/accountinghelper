@@ -40,7 +40,7 @@ handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
 
 #============LIFF API=================
 liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
-
+user_id=""
 
 try:
     now_LIFF_APP_number = len(liff_api.get())
@@ -85,7 +85,6 @@ def callback():
         abort(400)
     return 'OK'
 
-user_id=""
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
