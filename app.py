@@ -69,6 +69,11 @@ def index():
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template("./liff.html")
 
+
+@app.route("/edit_data",methods=["GET","POST"])
+def edit_html():
+    render_template('./edit_data.html')
+
     
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])

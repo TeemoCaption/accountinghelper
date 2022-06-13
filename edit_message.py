@@ -201,7 +201,7 @@ def find_date(user,date):
                     "action": {
                     "type": "uri",
                     "label": "修改該筆紀錄",
-                    "uri": "https://linecorp.com"
+                    "uri": "https://keepspending.herokuapp.com/edit_data"
                     }
                 }
                 ],
