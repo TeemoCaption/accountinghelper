@@ -74,6 +74,17 @@ def index():
 @app.route("/edit_data/<int:num>/",methods=["GET","POST"])
 def edit_html(num):
     edit_data=edit_list[num]
+    if request.method=="POST":
+        m_class=request.form.get('class')
+        date=str(request.form.get('date')).replace('T',' ')
+        m_type=request.form.get('type')
+        item=request.form.get('item')
+        money=request.form.get('money')
+        keep=request.form.get('keep')
+        #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
+        write_one_data(user_id,m_class,date,m_type,item,money,keep)
+        message="你於"+date+"記了一筆"+m_class+"\n項目類別："+m_type+"\n項目名稱："+item+"\n金額是$"+money+"元"+"\n備註："+keep
+        line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template('./edit_data.html',data=edit_data)
 
     
