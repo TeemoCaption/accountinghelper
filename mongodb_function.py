@@ -117,7 +117,7 @@ def updateData(user_id,m_class,date,m_type,item,money,keep):
     date=str(date).replace('T',' ')
     money=int(money)
     post={
-        "user_id": user,
+        "user_id": user_id,
         "class":m_class,
         "date":date,
         "type":m_type,
@@ -126,5 +126,3 @@ def updateData(user_id,m_class,date,m_type,item,money,keep):
         "keep":keep
     }
     col.update_one(find, post)
-    message="紀錄更新完成"
-    return message
