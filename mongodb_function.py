@@ -67,10 +67,8 @@ def read_date(user,date):
     target_date="^"+str(date)
     data_list=[]
     null_str=""
-    
     for data in col.find({'user_id': user,'date':{'$regex':target_date}}):  # $regex正規表達式
         if(str(data.get('keep'))==''):
-            global null_str
             null_str="無"
         data_list.append([str(data.get('class')),str(data.get('type')),str(data.get('item')),str(data.get('money')),null_str])
     return data_list
