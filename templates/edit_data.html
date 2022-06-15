@@ -112,7 +112,7 @@
     function liff_openWindow() {
         // window.location.replace("https://developers.line.biz/en/reference/liff/ ")
         liff.openWindow({
-            url: "https://developers.line.biz/en/reference/liff/ ",
+            url: "https://developers.line.biz/en/reference/liff/",
             external: true,
         });
     }
@@ -127,8 +127,8 @@
     }
 
     $("#btnsubmit ").click(function(e) {
-        var date = document.querySelector(' input[type="datetime-local " ] ').value;
-        var m_class = $('input[name="drone " ]:checked ').val()
+        var date = document.querySelector('input[type="datetime-local " ] ').value;
+        var m_class = $('input[name="drone"]:checked').val()
         var m_type = $("#m_type ").val();
         var item = $("#inputitem ").val();
         var money = $("#inputmoney ").val();
