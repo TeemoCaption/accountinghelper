@@ -114,5 +114,17 @@ def col_find(key):
 
 def updateData(user_id,m_class,date,m_type,item,money,keep):
     find={"user_id":user_id,"date":date}
-    editdate={"$set":{"user_id":user_id,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}}
-    col.update_many(find, editdate)
+    date=str(date).replace('T',' ')
+    money=int(money)
+    post={
+        "user_id": user,
+        "class":m_class,
+        "date":date,
+        "type":m_type,
+        "item":item,
+        "money":money,
+        "keep":keep
+    }
+    col.update_one(find, post)
+    message="紀錄更新完成"
+    return message
