@@ -83,7 +83,7 @@ def edit_html(num):
         keep=request.form.get('keep')
         updateData(edit_data[0], m_class, date, m_type, item, money, keep)
         message="紀錄更新完成"
-        line_bot_api.push_message(user_id,TextSendMessage(text=message))
+        line_bot_api.push_message(edit_data[0],TextSendMessage(text=message))
     return render_template('./edit_data.html',data=edit_data)
 
     
