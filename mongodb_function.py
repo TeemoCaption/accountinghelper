@@ -126,4 +126,4 @@ def updateData(user_id,m_class,date,m_type,item,money,keep):
         "money":money,
         "keep":keep
     }}
-    col.update_one(find, post)
+    col.update_one(find, post,upsert=True)
