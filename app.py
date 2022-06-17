@@ -83,13 +83,13 @@ def edit_html(num):
         date=str(request.form.get('date')).replace('T',' ')
         m_type=request.form.get('type')
         item=request.form.get('item')
-        money=int(request.form.get('money'))
+        money=request.form.get('money')
         keep=request.form.get('keep')
         #message=str(data)
         updateData(user_id, m_class, date, m_type, item, money, keep)
         message="紀錄更新完成"
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
-    return render_template('./edit_data.html',data=data)
+    return render_template('./edit_data.html/<num>',data=data)
 
     
 # 監聽所有來自 /callback 的 Post Request
