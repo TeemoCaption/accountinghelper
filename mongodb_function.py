@@ -116,7 +116,8 @@ def updateData(user_id,m_class,date,m_type,item,money,keep):
     find={"user_id":user_id,"date":date}
     date=str(date).replace('T',' ')
     money=int(money)
-    post={"$set":{
+    post={
+        "$set":{
         "user_id": user_id,
         "class":m_class,
         "date":date,

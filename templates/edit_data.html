@@ -126,27 +126,27 @@
         alert(DecodedIDToken);
     }
 
-    $("#btnsubmit ").click(function(e) {
+    $("#btnsubmit").click(function(e) {
         var date = document.querySelector('input[type="datetime-local " ] ').value;
         var m_class = $('input[name="drone"]:checked').val()
-        var m_type = $("#m_type ").val();
-        var item = $("#inputitem ").val();
-        var money = $("#inputmoney ").val();
-        var keep = $("#inputkeep ").val();
+        var m_type = $("#m_type").val();
+        var item = $("#inputitem").val();
+        var money = $("#inputmoney").val();
+        var keep = $("#inputkeep").val();
 
         if (item != " " && money != " " && date != " ") {
             alert("修改成功!!! ")
 
             $.ajax({
-                type: "POST ",
-                url: "/ ",
+                type: "POST",
+                url: "/",
                 data: {
-                    "class ": m_class,
-                    "date ": date,
-                    "type ": m_type,
-                    "item ": item,
-                    "money ": money,
-                    "keep ": keep
+                    "class": m_class,
+                    "date": date,
+                    "type": m_type,
+                    "item": item,
+                    "money": money,
+                    "keep": keep
                 },
                 success: function(response) {
                     console.log(response);
