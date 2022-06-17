@@ -129,14 +129,13 @@
         var item = $("#inputitem").val();
         var money = $("#inputmoney").val();
         var keep = $("#inputkeep").val();
-        var id = "{{data[5]}}"
 
         if (item != "" && money != "" && date != "") {
             alert("修改成功!!! ")
 
             $.ajax({
                 type: "POST",
-                url: `/edit_data/${id}`,
+                url: `/edit_data/{{data[5]}}/`,
                 data: {
                     "class": m_class,
                     "date": date,
