@@ -73,7 +73,10 @@ def index():
 
 @app.route("/edit_data/<int:num>/",methods=["GET","POST"])
 def edit_html(num):
-    edit_data=edit_list[num]
+    datalist=list()
+    for i in range(len(edit_list)):
+        datalist.append(edit_list[num][i])
+    datalist.append(num)
     if request.method=="POST":
         m_class=request.form.get('class')
         date=str(request.form.get('date')).replace('T',' ')
@@ -81,11 +84,11 @@ def edit_html(num):
         item=request.form.get('item')
         money=request.form.get('money')
         keep=request.form.get('keep')
-        message=str(edit_data)
+        message=str(datalist)
         #updateData(user_id, m_class, date, m_type, item, money, keep)
         #message="紀錄更新完成"
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
-    return render_template('./edit_data.html',data=edit_data)
+    return render_template('./edit_data.html',data=datalist)
 
     
 # 監聽所有來自 /callback 的 Post Request
