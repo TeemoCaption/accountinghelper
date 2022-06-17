@@ -74,6 +74,7 @@ def index():
 @app.route("/edit_data/<int:num>/",methods=["GET","POST"])
 def edit_html(num):
     edit_data=edit_list[num]
+    edit_data.append(num)
     if request.method=="POST":
         m_class=request.form.get('class')
         date=str(request.form.get('date')).replace('T',' ')
