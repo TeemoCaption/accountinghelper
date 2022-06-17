@@ -129,13 +129,15 @@
         var item = $("#inputitem").val();
         var money = $("#inputmoney").val();
         var keep = $("#inputkeep").val();
+        var id = parseInt("{{data[5]}}")
+
 
         if (item != "" && money != "" && date != "") {
             alert("修改成功!!! ")
 
             $.ajax({
                 type: "POST",
-                url: "/edit_data/",
+                url: `/edit_data/${id}`,
                 data: {
                     "class": m_class,
                     "date": date,
