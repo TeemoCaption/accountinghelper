@@ -83,15 +83,15 @@
         </div>
         <label class="form-label">項目名稱：</label>
         <div class="mb-3">
-            <input type="text" class="form-control" id="inputitem" required value="{{data[1]}}">
+            <input type="text" class="form-control" id="inputitem" required value="{{data[2]}}">
         </div>
         <label class=" form-label">金額：</label>
         <div class="mb-3">
-            <input type="text " class="form-control " id="inputmoney " required value="{{data[2]}}">
+            <input type="text " class="form-control " id="inputmoney " required value="{{data[3]}}">
         </div>
         <label class="form-label ">備註：</label>
         <div class="mb-3 ">
-            <input type="text" class="form-control" id="inputkeep" value="{{data[3]}}">
+            <input type="text" class="form-control" id="inputkeep" value="{{data[4]}}">
         </div>
         <button type="submit" class="btn btn-primary" id="btnsubmit">送出</button>
     </form>
@@ -135,7 +135,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/edit_data/{{data[4]}}/",
+                url: "/edit_data/{{data[5]}}/",
                 data: {
                     "class": m_class,
                     "date": date,

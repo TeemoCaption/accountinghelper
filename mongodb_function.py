@@ -44,7 +44,7 @@ def dicMemberCheck(key, dicObj):
 
 def write_one_data(user,m_class,date,m_type,item,money,keep):        
     date=str(date).replace('T',' ')
-    money=int(money)
+    #money=int(money)
     post={
         "user_id": user,
         "class":m_class,
