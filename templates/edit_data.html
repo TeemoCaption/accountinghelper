@@ -136,8 +136,8 @@
             alert("修改成功!!! ")
 
             $.ajax({
-                type: "POST",
-                url: `edit_data.html`,
+                type: "GET",
+                url: `/edit_data/${id}`,
                 data: {
                     "class": m_class,
                     "date": date,
