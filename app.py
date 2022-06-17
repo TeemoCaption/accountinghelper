@@ -74,9 +74,9 @@ def index():
 @app.route("/edit_data/<int:num>/",methods=["GET","POST"])
 def edit_html(num):
     data=list()
-    edit=edit_list[num]
-    for i in range(len(edit_list)):
-        data.append(edit_list[i])
+    edit_data=edit_list[num]
+    for i in range(len(edit_data)):
+        data.append(edit_data[i])
     data.append(num)
     if request.method=="POST":
         m_class=request.form.get('class')
@@ -85,7 +85,7 @@ def edit_html(num):
         item=request.form.get('item')
         money=request.form.get('money')
         keep=request.form.get('keep')
-        message=str(datalist)
+        message=str(data)
         #updateData(user_id, m_class, date, m_type, item, money, keep)
         #message="紀錄更新完成"
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
