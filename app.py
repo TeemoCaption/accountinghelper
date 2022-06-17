@@ -83,7 +83,7 @@ def edit_html(num):
         date=str(request.form.get('date')).replace('T',' ')
         m_type=request.form.get('type')
         item=request.form.get('item')
-        money=request.form.get('money')
+        money=int(request.form.get('money'))
         keep=request.form.get('keep')
         #message=str(data)
         updateData(user_id, m_class, date, m_type, item, money, keep)
