@@ -87,9 +87,9 @@
         </div>
         <label class=" form-label">金額：</label>
         <div class="mb-3">
-            <input type="text " class="form-control " id="inputmoney " required value="{{data[4]}}">
+            <input type="text" class="form-control" id="inputmoney" required value="{{data[4]}}">
         </div>
-        <label class="form-label ">備註：</label>
+        <label class="form-label">備註：</label>
         <div class="mb-3 ">
             <input type="text" class="form-control" id="inputkeep" value="{{data[5]}}">
         </div>
@@ -129,15 +129,15 @@
         var item = $("#inputitem").val();
         var money = $("#inputmoney").val();
         var keep = $("#inputkeep").val();
-        var localurl = window.location.href;
+        var local_url = window.location.href;
 
 
         if (item != "" && money != "" && date != "") {
-            alert("修改成功!!! ")
+            alert(local_url)
 
             $.ajax({
                 type: "POST",
-                url: localurl,
+                url: local_url,
                 data: {
                     "class": m_class,
                     "date": date,
@@ -153,7 +153,7 @@
                     console.log(error);
                 }
             });
-            console.log(data)
+            console.log(data);
         }
 
     });
