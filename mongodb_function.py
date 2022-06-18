@@ -110,3 +110,5 @@ def updateData(user_id,m_class,date,m_type,item,money,keep):
     money=int(money)
     post={"$set":{"user_id": user_id,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}}
     col.update_one(find, post)
+    message="更新成功!!!"
+    return message
