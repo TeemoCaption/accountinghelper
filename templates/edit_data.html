@@ -129,13 +129,15 @@
         var item = $("#inputitem").val();
         var money = $("#inputmoney").val();
         var keep = $("#inputkeep").val();
+        var localurl = window.location.href;
+
 
         if (item != "" && money != "" && date != "") {
             alert("修改成功!!! ")
 
             $.ajax({
                 type: "POST",
-                url: "/edit_data/{{num}}/",
+                url: localurl,
                 data: {
                     "class": m_class,
                     "date": date,
