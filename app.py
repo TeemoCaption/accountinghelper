@@ -86,7 +86,7 @@ def edit_data(num):
         money=request.form.get('money')
         keep=request.form.get('keep')
         #message=str(data)
-        message=updateData(user_id, m_class, date, m_type, item, money, keep)
+        message=updateData(data,user_id, m_class, date, m_type, item, money, keep)
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template('./edit_data.html',data=data,num=num)
 

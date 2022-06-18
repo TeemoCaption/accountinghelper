@@ -103,11 +103,10 @@ def col_find(key):
     print(data)
     return data
 
-def updateData(user_id,m_class,date,m_type,item,money,keep):
-    data=col.find_one({},{"user_id":user_id,"date":date})
+def updateData(data,user_id,m_class,date,m_type,item,money,keep):
     date=str(date).replace('T',' ')
-    money=int(money)
+    #money=int(money)
     post={"$set":{"user_id": user_id,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}}
-    col.update_one({'_id':data['_id']}, post)
-    message=str(data['_id'])
+    col.update_one({'user_id':data[0],'class':data[1],'type':data[2],'item':data[3]},data,post)
+    message="修改成功"
     return message
