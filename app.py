@@ -71,16 +71,16 @@ def index():
     return render_template("./liff.html")
 
 
-@app.route("/<int:num>",methods=["GET","POST"])
+@app.route("/edit_data/<int:num>",methods=["GET","POST"])
 def edit_html(num):
     edit_data=edit_list[num]
     if request.method=="POST":
-        m_class=request.values.get('class')
-        date=str(request.values.get('date')).replace('T',' ')
-        m_type=request.values.get('type')
-        item=request.values.get('item')
-        money=request.value.get('money')
-        keep=request.values.get('keep')
+        m_class=request.form.get('class')
+        date=str(request.form.get('date')).replace('T',' ')
+        m_type=request.form.get('type')
+        item=request.form.get('item')
+        money=request.form.get('money')
+        keep=request.form.get('keep')
         #message=str(data)
         updateData(edit_data[0], m_class, date, m_type, item, money, keep)
         message="紀錄更新完成"
