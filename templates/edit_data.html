@@ -134,7 +134,7 @@
 
         if (item != "" && money != "" && date != "") {
             alert("修改完成")
-
+            console.log(data)
             $.ajax({
                 type: "POST",
                 url: '/edit_data/{{num}}',
