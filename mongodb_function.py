@@ -107,6 +107,6 @@ def updateData(data,user_id,m_class,date,m_type,item,money,keep):
     date=str(date).replace('T',' ')
     #money=int(money)
     post={"$set":{"user_id": user_id,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}}
-    col.update_one({'user_id':data[0],'class':data[1],'type':data[2],'item':data[3]},data,post)
+    col.update_one({'user_id':str(data[0]),'class':str(data[1]),'type':str(data[2]),'item':str(data[3])},data,post)
     message="修改成功"
     return message
