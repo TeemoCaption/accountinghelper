@@ -71,8 +71,9 @@ def index():
     return render_template("./liff.html")
 
 
-@app.route("/edit_data/<int:num>/",methods=["GET","POST"])
+@app.route("/edit_data/<num>/",methods=["GET","POST"])
 def edit_data(num):
+    n=int(num)
     edit_data=edit_list[num]
     if request.method=="POST":
         m_class=request.form.get('class')
