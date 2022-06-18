@@ -109,6 +109,8 @@ def updateData(user_id,m_class,date,m_type,item,money,keep):
     date=str(date).replace('T',' ')
     money=int(money)
     post={"$set":{"user_id": user_id,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}}
-    #col.update_one(id['_id'], post)
-    message=str(data)
+    if(col.update_one(data['_id'], post,upsert=True)):
+        message="更新成功!!!"
+    else:
+        message="失敗"
     return message
