@@ -79,6 +79,7 @@ def edit_data(num):
         data.append(d)
     data.append(num)
     if request.method=="POST":
+        user_id=request.form.get('user_id')
         m_class=request.form.get('class')
         date=str(request.form.get('date')).replace('T',' ')
         m_type=request.form.get('type')
