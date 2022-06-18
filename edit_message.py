@@ -68,6 +68,7 @@ def find_date(user,date):
     data=read_date(user,date)
     bubbles=[]
     for i in range(len(data)):
+        n=str(i)
         bubble={
             "type": "bubble",
             "hero": {
@@ -201,7 +202,7 @@ def find_date(user,date):
                     "action": {
                     "type": "uri",
                     "label": "修改該筆紀錄",
-                    "uri": f"https://keepspending.herokuapp.com/edit_data/{i}"
+                    "uri": f"https://keepspending.herokuapp.com/edit_data/{n}"
                     }
                 }
                 ],
