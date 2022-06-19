@@ -99,8 +99,18 @@
 <script>
     //==========================LIFF API初始化================================
     $(document).ready(function() {
+        liff.ready.then(() => {
+            liff.getProfile()
+                .then((profile) => {
+                    alert(JSON.stringify(profile));
+                    var userid = profile.userid;
+                })
+                .catch((err) => {
+                    console.log("error", err)
+                })
+        });
         liff.init({
-            liffId: "1657227824-eDwdQj2b"
+            liff_id: "1657227824-eDwdQj2b"
         });
     });
     //==========================LIFF API初始化================================
@@ -108,7 +118,7 @@
     function liff_openWindow() {
         // window.location.replace("https://developers.line.biz/en/reference/liff/ ")
         liff.openWindow({
-            url: "https://developers.line.biz/en/reference/liff/",
+            url: "https://liff.line.me/1657227824-eDwdQj2b",
             external: true,
         });
     }
@@ -139,7 +149,6 @@
                 type: "POST",
                 url: local_url,
                 data: {
-                    "user_id": "{{data[0]}}",
                     "class": m_class,
                     "date": date,
                     "type": m_type,
