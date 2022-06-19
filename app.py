@@ -77,7 +77,7 @@ def index():
 
 @app.route("/edit_data/<int:num>",methods=["GET","POST"])
 def edit_data(num):
-    user_id=col.find_one({'rid':num}).get('user_id')
+    user_id=col.find_one({"rid":num})
     if request.method=="POST":
         m_class=request.form.get('class')
         date=str(request.form.get('date')).replace('T',' ')
@@ -86,7 +86,7 @@ def edit_data(num):
         money=request.form.get('money')
         keep=request.form.get('keep')
         #message=str(data)
-        message=updateData(user_id,m_class, date, m_type, item, money, keep)
+        message=updateData(num,m_class, date, m_type, item, money, keep)
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template('./edit_data.html',data=edit_list)
 
