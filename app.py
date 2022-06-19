@@ -77,7 +77,7 @@ def index():
 
 @app.route("/edit_data/<int:num>/",methods=["GET","POST"])
 def edit_data(num):
-    user_id=col.find_one({"rid":num})
+    user_id=col.find_one({"rid":num}).get('user_id')
     edit_data=edit_list[num]
     if request.method=="POST":
         m_class=request.form.get('class')
