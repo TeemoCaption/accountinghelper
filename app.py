@@ -74,15 +74,16 @@ def index():
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template("./liff.html")
 
-edit_data=list()
+
 @app.route("/edit_data/<int:num>/",methods=["GET","POST"])
 def edit_data(num):
     user_id=col.find_one({"rid":num}).get('user_id')
-    
+    edit_data=list()
     for i in range(len(edit_list)):
         if(edit_list[i][0]==num):
             edit_data=edit_list[i]
             break
+    data=edit_data
     if request.method=="POST":
         m_class=request.form.get('class')
         date=str(request.form.get('date')).replace('T',' ')
@@ -93,7 +94,7 @@ def edit_data(num):
         #message=str(data)
         message=updateData(num,m_class, date, m_type, item, money, keep)
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
-    return render_template('./edit_data.html',data=edit_data)
+    return render_template('./edit_data.html',data=data)
 
     
 # 監聽所有來自 /callback 的 Post Request
