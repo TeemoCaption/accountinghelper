@@ -49,7 +49,7 @@ def write_one_data(user,m_class,date,m_type,item,money,keep):
     while(True):
         if(col2.count_documents({"rid":i})!=0):
             i+=1
-        else:
+        elif(col2.count_documents({"rid":i})==0):
             col2.insert_one({"rid":i})
             break
             
