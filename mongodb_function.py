@@ -120,6 +120,6 @@ def updateData(rid,m_class,date,m_type,item,money,keep):
     date=str(date).replace('T',' ')
     money=int(money)
     post={"$set":{"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}}
-    col.update_one({"rid":rid}, post)
+    col.update_one({"rid":rid}, post,upsert=True)
     message="修改完成"
     return message
