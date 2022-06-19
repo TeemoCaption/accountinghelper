@@ -74,7 +74,6 @@ def find_date(user,date):
     data=read_date(user,date)
     bubbles=[]
     for i in range(len(data)):
-        liff_api.update(liff_id,view_type="full",view_url=f"https://keepspending.herokuapp.com/edit_data/{i}")
         bubble={
             "type": "bubble",
             "hero": {
@@ -208,7 +207,7 @@ def find_date(user,date):
                     "action": {
                     "type": "uri",
                     "label": "修改該筆紀錄",
-                    "uri": "https://liff.line.me/1657158455-D64JZxmQ"
+                    "uri": f"https://keepspending.herokuapp.com/edit_data/{i}"
                     }
                 }
                 ],
