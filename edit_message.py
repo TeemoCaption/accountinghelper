@@ -11,10 +11,10 @@ from liffpy import (
 from mongodb_function import *
 from collections import defaultdict
 liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
-liff_id="https://liff.line.me/1657158455-5mnd0mJR"
+liff_id="https://liff.line.me/1657158455-D64JZxmQ"
 
 
-def select_date():
+def select_date():  
     content={
         "type": "carousel",
         "contents": [
@@ -208,7 +208,7 @@ def find_date(user,date):
                     "action": {
                     "type": "uri",
                     "label": "修改該筆紀錄",
-                    "uri": liff_id
+                    "uri": "https://liff.line.me/1657158455-D64JZxmQ"
                     }
                 }
                 ],
