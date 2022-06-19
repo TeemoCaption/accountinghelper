@@ -48,7 +48,7 @@ try:
 except:
     now_LIFF_APP_number = 0
 
-target_LIFF_APP_number = 10
+target_LIFF_APP_number = 2
 print(target_LIFF_APP_number,now_LIFF_APP_number)
 if now_LIFF_APP_number < target_LIFF_APP_number:
     for i in range(target_LIFF_APP_number - now_LIFF_APP_number):
@@ -71,7 +71,7 @@ def index():
     return render_template("./liff.html")
 
 
-@app.route("/edit_data/<int:num>/",methods=["GET","POST"])
+@app.route("/edit_data",methods=["GET","POST"])
 def edit_data(num):
     data=list()
     edit_data=edit_list[num]

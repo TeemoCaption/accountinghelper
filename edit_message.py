@@ -3,9 +3,15 @@ from typing import KeysView
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
+from liffpy import (
+    LineFrontendFramework as LIFF,
+    ErrorResponse
+)
 #引入檔案
 from mongodb_function import *
 from collections import defaultdict
+liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
+liff_id="https://liff.line.me/1657158455-5mnd0mJR"
 
 
 def select_date():
@@ -68,6 +74,7 @@ def find_date(user,date):
     data=read_date(user,date)
     bubbles=[]
     for i in range(len(data)):
+        liff_api.update(liff_id,view_type="full",view_url=f"https://keepspending.herokuapp.com/edit_data/{i}")
         bubble={
             "type": "bubble",
             "hero": {
@@ -201,7 +208,7 @@ def find_date(user,date):
                     "action": {
                     "type": "uri",
                     "label": "修改該筆紀錄",
-                    "uri": f"https://keepspending.herokuapp.com/edit_data/{i}"
+                    "uri": liff_id
                     }
                 }
                 ],

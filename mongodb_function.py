@@ -43,14 +43,9 @@ def dicMemberCheck(key, dicObj):
 #寫入資料data是dictionary
 
 def write_one_data(user,m_class,date,m_type,item,money,keep):  
-    id=col.count_documents()
     date=str(date).replace('T',' ')
     money=int(money)
-    for i in range(1,(id+1)):
-        if(col.find_one({"id":i})==None):
-            post={"id":i,"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}
-            col.insert_one(post)
-    post={"id":(id+1),"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}
+    post={"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}
     col.insert_one(post)
     
     
