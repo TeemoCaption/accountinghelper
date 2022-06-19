@@ -26,6 +26,8 @@ client = pymongo.MongoClient("mongodb+srv://Teemo:edwardmb0816@accounthelper.ul5
 #第一個db的建立
 db = client['LineBot_AccountHelper']
 col = db['AccountHelper']
+col2=db['Record']
+
 
 #print(client.database_names())#列出client中的資料庫名稱
 #print(db.collection_names())#列出db中的集合名稱
@@ -42,10 +44,18 @@ def dicMemberCheck(key, dicObj):
 
 #寫入資料data是dictionary
 
-def write_one_data(user,m_class,date,m_type,item,money,keep):  
+def write_one_data(user,m_class,date,m_type,item,money,keep): 
+    i=0
+    while(True):
+        if(col2.count_documents({"rid":i})!=0):
+            i+=1
+            col2.insert_one({"rid":i}) 
+        else:
+            col2.insert_one({"rid":i})
+            
     date=str(date).replace('T',' ')
     money=int(money)
-    post={"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}
+    post={"rid":i,"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}
     col.insert_one(post)
     
     
