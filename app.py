@@ -2,6 +2,7 @@ from crypt import methods
 from email import message
 from flask import Flask, jsonify, request, abort,render_template
 import json
+import pymongo
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -29,6 +30,9 @@ import tempfile, os
 import datetime
 import time
 #======python的函數庫==========
+client = pymongo.MongoClient("mongodb+srv://Teemo:edwardmb0816@accounthelper.ul59p.mongodb.net/test")
+col = db['AccountHelper']
+
 
 app = Flask(__name__,template_folder='templates')
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
@@ -73,11 +77,7 @@ def index():
 
 @app.route("/edit_data/<int:num>",methods=["GET","POST"])
 def edit_data(num):
-    data=list()
-    edit_data=edit_list[num]
-    for d in edit_data:
-        data.append(d)
-    data.append(num)
+    user_id=col.find_one({'rid':num}).get('user_id')
     if request.method=="POST":
         m_class=request.form.get('class')
         date=str(request.form.get('date')).replace('T',' ')
@@ -88,7 +88,7 @@ def edit_data(num):
         #message=str(data)
         message=updateData(user_id,m_class, date, m_type, item, money, keep)
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
-    return render_template('./edit_data.html',data=edit_data)
+    return render_template('./edit_data.html',data=edit_list)
 
     
 # 監聽所有來自 /callback 的 Post Request

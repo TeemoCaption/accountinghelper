@@ -95,7 +95,7 @@ def find_date(user,date):
                 "contents": [
                 {
                     "type": "text",
-                    "text": data[i][1],
+                    "text": data[i][2],
                     "weight": "bold",
                     "size": "xl"
                 },
@@ -119,7 +119,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i][2],
+                            "text": data[i][3],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -141,7 +141,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i][3],
+                            "text": data[i][4],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -163,7 +163,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i][4],
+                            "text": data[i][5],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -185,7 +185,7 @@ def find_date(user,date):
                         },
                         {
                             "type": "text",
-                            "text": data[i][5],
+                            "text": data[i][6],
                             "wrap": True,
                             "color": "#666666",
                             "size": "sm",
@@ -209,7 +209,7 @@ def find_date(user,date):
                     "action": {
                     "type": "uri",
                     "label": "修改該筆紀錄",
-                    "uri": f"https://keepspending.herokuapp.com/edit_data/{i}"
+                    "uri": f"https://keepspending.herokuapp.com/edit_data/{int(data[i][0])}"
                     }
                 }
                 ],

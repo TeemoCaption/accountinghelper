@@ -99,18 +99,10 @@
 <script>
     //==========================LIFF API初始化================================
     $(document).ready(function() {
-        liff.ready.then(() => {
-            liff.getProfile()
-                .then((profile) => {
-                    alert(JSON.stringify(profile));
-                    var userid = profile.userid;
-                })
-                .catch((err) => {
-                    console.log("error", err)
-                })
-        });
-        liff.init({
-            liff_id: "1657158455-D64JZxmQ"
+        $(document).ready(function() {
+            liff.init({
+                liffId: "1657158455-5JqnB7lj"
+            });
         });
     });
     //==========================LIFF API初始化================================
@@ -149,7 +141,6 @@
                 type: "POST",
                 url: local_url,
                 data: {
-                    "user_id": userid,
                     "class": m_class,
                     "date": date,
                     "type": m_type,
