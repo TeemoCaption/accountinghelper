@@ -69,7 +69,7 @@ def index():
         money=request.form.get('money')
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
-        write_one_data(user_id,m_class,date,m_type,item,money,keep)
+        write_one_data(user_token,m_class,date,m_type,item,money,keep)
         message="你於"+date+"記了一筆"+m_class+"\n項目類別："+m_type+"\n項目名稱："+item+"\n金額是$"+money+"元"+"\n備註："+keep
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template("./liff.html")
@@ -115,8 +115,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    global user_id
-    user_id=event.source.user_id
+    global user_token
+    user_token=event.reply_token
     if '查看功能' ==msg:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
@@ -154,13 +154,13 @@ def handle_message(event):
 def get_dateData(event):
     data=event.postback.data
     date=event.postback.params['date']
-    user=event.source.user_id
+    user_token=event.reply_token
     message=[]
     if data=="editdate":
         message=find_date(user,date)
         global edit_list
         edit_list=read_date(user,date)
-        line_bot_api.push_message(user, message)
+        line_bot_api.reply_message(user, message)
     
     
 
