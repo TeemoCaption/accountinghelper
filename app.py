@@ -77,10 +77,6 @@ def index():
 
 @app.route("/edit_data/<int:num>/",methods=["GET","POST"])
 def edit_datas(num):
-    for i in range(len(edit_list)):
-        if(edit_list[i][0]==num):
-            edit_data=edit_list[i]
-            break
     user_id=col.find_one({"rid":num}).get('user_id')
     if request.method=="POST":
         m_class=request.form.get('class')
@@ -92,7 +88,7 @@ def edit_datas(num):
         #message=str(data)
         message=updateData(num,m_class, date, m_type, item, money, keep)
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
-    return render_template('./edit_data.html',data=edit_data)
+    return render_template('./edit_data.html')
 
     
 # 監聽所有來自 /callback 的 Post Request
@@ -157,9 +153,13 @@ def get_dateData(event):
     message=[]
     if data=="editdate":
         message=find_date(user,date)
+        if (message==None):
+            message="該日期沒有任何紀錄"
+            line_bot_api.push_message(user, message)
+        else:
+            line_bot_api.push_message(user, message)
         global edit_list
         edit_list=read_date(user,date)
-        line_bot_api.push_message(user, message)
     
     
 
