@@ -93,7 +93,7 @@ def edit_datas(num):
         #message=str(data)
         message=updateData(num,m_class, date, m_type, item, money, keep)
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
-    return render_template('./edit_data.html')
+    return render_template('./edit_data.html',data=edit_data)
 
     
 # 監聽所有來自 /callback 的 Post Request
