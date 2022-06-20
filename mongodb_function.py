@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request, abort,render_template
 import pymongo
 from collections import defaultdict
 import json
+import datetime
 #from app import *
 #=======LineBot相關套件引入==========
 from linebot import LineBotApi
@@ -76,20 +77,7 @@ def read_date(user,date):
             data_list.append([str(data.get('rid')),str(data.get('user_id')),str(data.get('class')),str(data.get('type')),str(data.get('item')),str(data.get('money')),str(null_str)])
     return data_list
 
-#讀取LINE的對話紀錄資料
-def read_chat_records():
-    data_list = []
-    for data in col.find():
-        if dicMemberCheck('events',data):
-            if dicMemberCheck('message',data['events'][0]):
-                if dicMemberCheck('text',data['events'][0]['message']):
-                    print(data['events'][0]['message']['text'])
-                    data_list.append(data['events'][0]['message']['text'])
-        else:
-            print('非LINE訊息',data)
 
-    print(data_list)
-    return data_list
 
 #刪除所有資料
 def delete_all_data():
@@ -122,3 +110,11 @@ def updateData(rid,m_class,date,m_type,item,money,keep):
     col.update_one({"rid":rid}, post,upsert=True)
     message="修改完成"
     return message
+
+def find_income():
+    today=datetime.datetime().today()
+    year=today.year
+    month=today.month
+    datelist=str(year)+"-"+str(month)
+    return datelist
+    
