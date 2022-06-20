@@ -11,8 +11,9 @@ def button_reply():
         quick_reply=QuickReply(
             items=[
                 QuickReplyButton(action=MessageAction(label="我要記帳",text="我要記帳")),
-                QuickReplyButton(action=MessageAction(label="查詢紀錄",text="查詢紀錄")),
+                QuickReplyButton(action=MessageAction(label="圖表統計",text="圖表統計")),
                 QuickReplyButton(action=MessageAction(label="修改紀錄",text="修改紀錄")),
+                QuickReplyButton(action=MessageAction(label="刪除紀錄",text="刪除紀錄")),
                 QuickReplyButton(action=MessageAction(label="最新合作廠商",text="最新合作廠商")),
                 QuickReplyButton(action=MessageAction(label="最新活動訊息",text="最新活動訊息")),
                 QuickReplyButton(action=MessageAction(label="註冊會員",text="註冊會員")),
@@ -22,6 +23,20 @@ def button_reply():
         )
     )
     return message
+
+def chart_button():
+    message=TextSendMessage(
+        text="請選擇資產或負債",
+        quick_reply=QuickReply(
+            items=[
+                QuickReplyButton(action=MessageAction(label="本月資產",text="本月資產")),
+                QuickReplyButton(action=MessageAction(label="本月負債",text="本月負債"))
+            ]
+        )
+    )
+    return message
+                
+
 
 #ImagemapSendMessage(組圖訊息)
 def imagemap_message():
