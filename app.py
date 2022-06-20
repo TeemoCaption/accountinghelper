@@ -71,13 +71,13 @@ def index():
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
         write_one_data(user_token,m_class,date,m_type,item,money,keep)
         message="你於"+date+"記了一筆"+m_class+"\n項目類別："+m_type+"\n項目名稱："+item+"\n金額是$"+money+"元"+"\n備註："+keep
-        line_bot_api.push_message(user_id,TextSendMessage(text=message))
+        line_bot_api.reply_message(user_token,TextSendMessage(text=message))
     return render_template("./liff.html")
 
 
 @app.route("/edit_data/<int:num>/",methods=["GET","POST"])
 def edit_data(num):
-    user_id=col.find_one({"rid":num}).get('user_id')
+    user_token=col.find_one({"rid":num}).get('user_token')
     edit_data=list()
     for i in range(len(edit_list)):
         if(edit_list[i][0]==num):
@@ -92,7 +92,7 @@ def edit_data(num):
         keep=request.form.get('keep')
         #message=str(data)
         message=updateData(num,m_class, date, m_type, item, money, keep)
-        line_bot_api.push_message(user_id,TextSendMessage(text=message))
+        line_bot_api.reply_message(user_token,TextSendMessage(text=message))
     return render_template('./edit_data.html',data=edit_data)
 
     
