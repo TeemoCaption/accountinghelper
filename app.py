@@ -153,7 +153,7 @@ def get_dateData(event):
     message=[]
     if data=="editdate":
         message=find_date(user,date)
-        if (message==None):
+        if (message=={"type":'carousel',"contents":[]}):
             message="該日期沒有任何紀錄"
             line_bot_api.push_message(user, message)
         else:
