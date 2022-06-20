@@ -157,9 +157,9 @@ def get_dateData(event):
     user_token=event.reply_token
     message=[]
     if data=="editdate":
-        message=find_date(user,date)
+        message=find_date(user_token,date)
         global edit_list
-        edit_list=read_date(user,date)
+        edit_list=read_date(user_token,date)
         line_bot_api.reply_message(user, message)
     
     
