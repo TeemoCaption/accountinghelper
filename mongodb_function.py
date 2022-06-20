@@ -44,7 +44,7 @@ def dicMemberCheck(key, dicObj):
 
 #寫入資料data是dictionary
 
-def write_one_data(user_token,m_class,date,m_type,item,money,keep): 
+def write_one_data(user,m_class,date,m_type,item,money,keep): 
     i=0
     while(True):
         if(col2.count_documents({"rid":i})!=0):
@@ -55,7 +55,7 @@ def write_one_data(user_token,m_class,date,m_type,item,money,keep):
             
     date=str(date).replace('T',' ')
     money=int(money)
-    post={"rid":i,"user_token": user_token,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}
+    post={"rid":i,"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}
     col.insert_one(post)
     
     
@@ -70,10 +70,10 @@ def write_many_datas(data):
 def read_date(user,date):
     target_date="^"+str(date)
     data_list=[]
-    for data in col.find({'user_token': user,'date':{'$regex':target_date}}):  # $regex正規表達式
+    for data in col.find({'user_id': user,'date':{'$regex':target_date}}):  # $regex正規表達式
         if(str(data.get('keep'))=='' or str(data.get('keep'))=='無'):
             null_str='無'
-            data_list.append([str(data.get('rid')),str(data.get('user_token')),str(data.get('class')),str(data.get('type')),str(data.get('item')),str(data.get('money')),str(null_str)])
+            data_list.append([str(data.get('rid')),str(data.get('user_id')),str(data.get('class')),str(data.get('type')),str(data.get('item')),str(data.get('money')),str(null_str)])
     return data_list
 
 #讀取LINE的對話紀錄資料

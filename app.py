@@ -44,7 +44,7 @@ handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
 
 #============LIFF API=================
 liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
-user_token=""
+user_id=""
 edit_list=""
 
 try:
@@ -69,15 +69,15 @@ def index():
         money=request.form.get('money')
         keep=request.form.get('keep')
         #Message={"class": m_class,"date": date,"type": m_type,"item": item,"money": money,"keep": keep}
-        write_one_data(user_token,m_class,date,m_type,item,money,keep)
+        write_one_data(user_id,m_class,date,m_type,item,money,keep)
         message="你於"+date+"記了一筆"+m_class+"\n項目類別："+m_type+"\n項目名稱："+item+"\n金額是$"+money+"元"+"\n備註："+keep
-        line_bot_api.reply_message(user_token,TextSendMessage(text=message))
+        line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template("./liff.html")
 
 
 @app.route("/edit_data/<int:num>/",methods=["GET","POST"])
 def edit_data(num):
-    user_token=col.find_one({"rid":num}).get('user_token')
+    user_id=col.find_one({"rid":num}).get('user_id')
     edit_data=list()
     for i in range(len(edit_list)):
         if(edit_list[i][0]==num):
@@ -92,7 +92,7 @@ def edit_data(num):
         keep=request.form.get('keep')
         #message=str(data)
         message=updateData(num,m_class, date, m_type, item, money, keep)
-        line_bot_api.reply_message(user_token,TextSendMessage(text=message))
+        line_bot_api.push_message(user_id,TextSendMessage(text=message))
     return render_template('./edit_data.html',data=edit_data)
 
     
@@ -115,8 +115,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    global user_token
-    user_token=event.reply_token
+    global user_id
+    user_id=event.source.user_id
     if '查看功能' ==msg:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
@@ -154,13 +154,13 @@ def handle_message(event):
 def get_dateData(event):
     data=event.postback.data
     date=event.postback.params['date']
-    user_token=event.reply_token
+    user=event.source.user_id
     message=[]
     if data=="editdate":
-        message=find_date(user_token,date)
+        message=find_date(user,date)
         global edit_list
-        edit_list=read_date(user_token,date)
-        line_bot_api.reply_message(user_token, message)
+        edit_list=read_date(user,date)
+        line_bot_api.push_message(user, message)
     
     
 
