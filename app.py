@@ -160,7 +160,7 @@ def get_dateData(event):
         message=find_date(user_token,date)
         global edit_list
         edit_list=read_date(user_token,date)
-        line_bot_api.reply_message(user, message)
+        line_bot_api.reply_message(user_token, message)
     
     
 
