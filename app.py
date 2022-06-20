@@ -82,7 +82,6 @@ def edit_datas(num):
             edit_data=edit_list[i]
             break
     user_id=col.find_one({"rid":num}).get('user_id')
-    edit_data=edit_list[n]
     if request.method=="POST":
         m_class=request.form.get('class')
         date=str(request.form.get('date')).replace('T',' ')
