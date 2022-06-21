@@ -12,13 +12,12 @@ CLIENT_ID="690045a99e48e85"
 #=======檔案及套件引入
 import matplotlib.pyplot as plt
 from mongodb_function import *
-import matplotlib.font_manager
+from matplotlib.font_manager import FontProperties
 client = pymongo.MongoClient("mongodb+srv://Teemo:edwardmb0816@accounthelper.ul59p.mongodb.net/test")
 db = client['LineBot_AccountHelper']
 col=db['Images']
-a = sorted([f.name for f in matplotlib.font_manager.fontManager.ttflist]) 
-#檢查字型是否成功安裝 
-plt.rcParams['font.sans-serif'] = ['Taipei Sans TC Beta'] #套用字型
+plt.rcParams['font.sans-serif'] = ['SimHei'] # 步驟一（替換sans-serif字型）
+plt.rcParams['axes.unicode_minus'] = False  # 步驟二（解決座標軸負數的負號顯示問題）
 
 
 
