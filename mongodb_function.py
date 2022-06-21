@@ -113,7 +113,5 @@ def updateData(rid,m_class,date,m_type,item,money,keep):
 
 def find_income():
     today=datetime.datetime().today()
-    year=today.year
-    month=today.month
-    date="{}-{}".format(year,month)
-    return TextSendMessage(text=str(date))
+    date=str(today)[:7]
+    return TextSendMessage(text=date)
