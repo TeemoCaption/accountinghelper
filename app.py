@@ -141,7 +141,7 @@ def handle_message(event):
         message=chart_button()
         line_bot_api.reply_message(event.reply_token,message)
     elif '本月收入'==msg:
-        message=show_income(user_id)
+        message=show_income(source.user_id)
         line_bot_api.reply_message(event.reply_token,message)
     #elif '功能列表' in msg:
         #message = function_list()
