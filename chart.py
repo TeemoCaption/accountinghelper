@@ -23,7 +23,7 @@ plt.rcParams['axes.unicode_minus'] = False  # 步驟二（解決座標軸負數�
 
 def show_income(user_id):
     type_list=["銀行卡","生活費","出租","捐贈","股息","退款","薪水","買賣","獎金","優惠券","其他"]
-    explodes=[0,0,0,0,0,0,0,0,0,0,0]
+    explodes=[0,0.25,0.5,0.75,1,1.25,1.5,1.75,2,2.25,2.5]    #圓餅圖各元素偏移程度
     datas=find_income(user_id)
     money=[0 for i in range(11)]
     for i in range(len(datas)):
@@ -34,7 +34,7 @@ def show_income(user_id):
         
     plt.figure(figsize=(6,9))
     color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
-    plt.pie(money,explode=explodes,labels=type_list,colors=color,labeldistance=2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=1)
+    plt.pie(money,explode=explodes,labels=type_list,colors=color,labeldistance=1.1,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=0.6)
     plt.axis('equal') 
     plt.title("本月收入", {"fontsize" : 28})
     plt.legend(loc = "best")   
