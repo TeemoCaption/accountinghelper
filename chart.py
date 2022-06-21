@@ -34,7 +34,7 @@ def show_income(user_id):
         
     plt.figure(figsize=(6,9))
     color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
-    plt.pie(money,explode=explodes,labels=type_list,colors=color,labeldistance=1.1,autopct = "%1.2f%%",shadow=False,startangle=90,pctdistance=0.6)
+    plt.pie(money,explode=explodes,labels=type_list,colors=color,labeldistance=2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=1)
     plt.axis('equal') 
     plt.title("本月收入", {"fontsize" : 28})
     plt.legend(loc = "best")   
