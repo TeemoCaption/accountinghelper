@@ -23,6 +23,7 @@ from new import *
 from Function import *
 from mongodb_function import *
 from edit_message import select_date,find_date
+from chart import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
@@ -139,8 +140,8 @@ def handle_message(event):
     elif '圖表統計'==msg:
         message=chart_button()
         line_bot_api.reply_message(event.reply_token,message)
-    elif '本月資產'==msg:
-        message=find_income(user_id)
+    elif '本月收入'==msg:
+        message=show_income(user_id)
         line_bot_api.reply_message(event.reply_token,message)
     #elif '功能列表' in msg:
         #message = function_list()

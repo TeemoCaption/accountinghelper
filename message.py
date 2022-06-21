@@ -26,11 +26,11 @@ def button_reply():
 
 def chart_button():
     message=TextSendMessage(
-        text="請選擇資產或負債",
+        text="請選擇收入或支出",
         quick_reply=QuickReply(
             items=[
-                QuickReplyButton(action=MessageAction(label="本月資產",text="本月資產")),
-                QuickReplyButton(action=MessageAction(label="本月負債",text="本月負債"))
+                QuickReplyButton(action=MessageAction(label="本月收入",text="本月收入")),
+                QuickReplyButton(action=MessageAction(label="本月支出",text="本月支出"))
             ]
         )
     )

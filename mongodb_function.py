@@ -56,7 +56,7 @@ def write_one_data(user,m_class,date,m_type,item,money,keep):
             
     date=str(date).replace('T',' ')
     money=int(money)
-    post={"rid":i,"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}
+    post={"rid":i,"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep,"img1_name":"","img2_name":""}
     col.insert_one(post)
     
     
@@ -116,5 +116,5 @@ def find_income(user_id):
     date=str(today)[:7]
     data_list=[]
     for data in col.find({'user_id':user_id,"date":{'$regex':date},"class":"收入"}):
-        data_list.append([str(data['type']),int(data['money'])])
-    return str(data_list)
+        data_list.append([str(data.get('type')),int(data.get('money')),str(data.get('user_id'))])
+    return data_list
