@@ -24,7 +24,7 @@ def show_income(user_id):
     for i in range(len(datas)):
         for j in range(len(type_list)):
             if(datas[i][0]==type_list[j]):
-                money[j]=money[j]+data[i][1]
+                money[j]=money[j]+datas[i][1]
                 break
     total=0
     for i in range(0,12):
