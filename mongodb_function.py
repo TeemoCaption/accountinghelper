@@ -115,5 +115,5 @@ def find_income():
     today=datetime.datetime().today()
     year=today.year
     month=today.month
-    date=f"{year}-{month}"
-    return date
+    date="{}-{}".format(year,month)
+    return TextSendMessage(text=str(date))
