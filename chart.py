@@ -34,6 +34,7 @@ def show_income(user_id):
     plt.axis('equal') 
     plt.title("本月收入", {"fontsize" : 18})
     plt.legend(loc = "best")   
+    plt.show()
     file_path=str(user_id)+"_1.jpg"
     plt.savefig(file_path, dpi=300, bbox_inches='tight')     
     plt.close()
