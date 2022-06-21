@@ -23,7 +23,7 @@ plt.rcParams['axes.unicode_minus'] = False  # 步驟二（解決座標軸負數�
 
 def show_income(user_id):
     type_list=["銀行卡","生活費","出租","捐贈","股息","退款","薪水","買賣","獎金","優惠券","其他"]
-    explodes=[0,0.25,0.5,0.75,1,1.25,1.5,1.75,2,2.25,2.5]    #圓餅圖各元素偏移程度
+    explodes=[0,0,0,0,0,0,0,0,0,0,0]
     datas=find_income(user_id)
     money=[0 for i in range(11)]
     for i in range(len(datas)):
