@@ -27,10 +27,10 @@ def show_income(user_id):
                 money[i]=money[i]+data[1]
                 break
     total=0
-    for i in range(12):
-        total+=int(money[i])
-    for i in range(12):
-        money[i]=int(money[i])/total 
+    for i in range(0,12):
+        total+=money[i]
+    for i in range(0,12):
+        money[i]=money[i]/total 
     plt.figure(figsize=(6,9))
     color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
     plt.pie(money,labels=type_list,pctdistance=0.6,colors=color,autopct = "%0.2f%%",textprops = {"fontsize" : 12},shadow=True)
