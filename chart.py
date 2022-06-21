@@ -38,7 +38,7 @@ def show_income(user_id):
     plt.pie(money,explode=explodes,labels=type_list,colors=color,labeldistance=1.1,autopct = "%1.2f%%",shadow=False,startangle=90,pctdistance=0.6)
     plt.axis('equal') 
     plt.title("本月收入", {"fontsize" : 28},fontproperties="SimSun")
-    plt.legend(loc = "best",ontproperties="SimSun")   
+    plt.legend(loc = "best",fontproperties="SimSun")   
     file_path="./images/"+str(user_id)+"_1.jpg"
     plt.savefig(file_path, dpi=300, bbox_inches='tight')     
     plt.close()
