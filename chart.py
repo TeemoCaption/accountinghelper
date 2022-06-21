@@ -18,6 +18,7 @@ col=db['Images']
 
 
 def show_income(user_id):
+    label="銀行卡","生活費","出租","捐贈","股息","退款","薪水","買賣","獎金","優惠券","其他"
     type_list=["銀行卡","生活費","出租","捐贈","股息","退款","薪水","買賣","獎金","優惠券","其他"]
     datas=find_income(user_id)
     money=[0 for i in range(12)]
@@ -35,9 +36,10 @@ def show_income(user_id):
         
     plt.figure(figsize=(6,9))
     color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
-    plt.pie(money,labels=type_list,pctdistance=0.6,colors=color,autopct = "%0.2f%%",textprops = {"fontsize" : 12},shadow=True)
+    plt.pie(money,labels=label,pctdistance=0.6,colors=color,autopct = "%0.2f%%",textprops = {"fontsize" : 12},shadow=True)
     plt.axis('equal') 
     plt.title("本月收入", {"fontsize" : 18})
+    plt.legend(loc = "best")   
     
     file_path="/images/"+str(user_id)+"_1.jpg"
     plt.savefig(file_path,bbox_inches='tight',pad_inches=0.0)     
