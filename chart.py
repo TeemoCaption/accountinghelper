@@ -19,7 +19,6 @@ col=db['Images']
 
 def show_income(user_id):
     type_list=["銀行卡","生活費","出租","捐贈","股息","退款","薪水","買賣","獎金","優惠券","其他"]
-    label=list(type_list)
     datas=find_income(user_id)
     money=[0 for i in range(12)]
     for i in range(len(datas)):
@@ -27,12 +26,6 @@ def show_income(user_id):
             if(datas[i][0]==type_list[j]):
                 money[j]=datas[i][1]
                 break
-            
-    total=0
-    for i in range(0,12):
-        total+=money[i]
-    for i in range(0,12):
-        money[i]=money[i]/total 
         
     plt.figure(figsize=(6,9))
     color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
