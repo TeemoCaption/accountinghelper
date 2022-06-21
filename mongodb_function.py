@@ -113,8 +113,8 @@ def updateData(rid,m_class,date,m_type,item,money,keep):
 
 def find_income(user_id):
     today=datetime.date.today()
-    date="/.*"+str(today)[:7]+".*/"
+    date=str(today)[:7]
     data_list=[]
-    for data in col.find({'user_id':user_id,"date":{'$regex':date},"class":"收入"}):
+    for data in col.find({'user_id':user_id,"date":{'$regex':f".*{date}.*"},"class":"收入"}):
         data_list.append([str(data.get('type')),int(data.get('money')),str(data.get('user_id'))])
     return data_list
