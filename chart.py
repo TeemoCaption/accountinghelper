@@ -18,8 +18,8 @@ col=db['Images']
 
 
 def show_income(user_id):
-    label="銀行卡","生活費","出租","捐贈","股息","退款","薪水","買賣","獎金","優惠券","其他"
     type_list=["銀行卡","生活費","出租","捐贈","股息","退款","薪水","買賣","獎金","優惠券","其他"]
+    label=list(type_list)
     datas=find_income(user_id)
     money=[0 for i in range(12)]
     for i in range(len(datas)):
