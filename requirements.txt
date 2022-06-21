@@ -5,3 +5,4 @@ pymongo
 dnspython
 matplotlib
 numpy
+pyimgur
