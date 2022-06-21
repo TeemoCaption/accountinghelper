@@ -44,5 +44,5 @@ def show_income(user_id):
     
     col.update_one({"user_id":user_id}, {"$set":{"img1_name":file_path}})    
     
-    message=ImageSendMessage(original_content_url=upload_image.link)
+    message=ImageSendMessage(preview_image_url=upload_image.link,original_content_url=upload_image.link)
     return message      
