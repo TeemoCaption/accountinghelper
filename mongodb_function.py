@@ -115,4 +115,4 @@ def find_income(user_id):
     today=datetime.date.today()
     date=str(today)[:7]
     data=col.find({'user_id':user_id,"date":{'$regex':date},"class":"收入"})
-    return str(data) 
+    return data
