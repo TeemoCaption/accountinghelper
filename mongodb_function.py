@@ -111,7 +111,8 @@ def updateData(rid,m_class,date,m_type,item,money,keep):
     message="修改完成"
     return message
 
-def find_income():
+def find_income(user_id):
     today=datetime.date.today()
     date=str(today)[:7]
-    return TextSendMessage(text=date)
+    data=col.find({'user_id':user_id,"date":{'$regex':date},"class":"收入"})
+    return str(data) 
