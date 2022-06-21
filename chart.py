@@ -24,28 +24,9 @@ def show_income(user_id):
     for i in range(len(datas)):
         for j in range(len(type_list)):
             if(datas[i][0]==type_list[j]):
-                money[j]=money[j]+datas[i][1]
+                money[j]=datas[i][1]
                 break
-    total=0
-    for i in range(0,12):
-        total+=money[i]
-    for i in range(0,12):
-        money[i]=money[i]/total 
-    plt.figure(figsize=(6,9))
-    color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
-    plt.pie(money,labels=type_list,pctdistance=0.6,colors=color,autopct = "%0.2f%%",textprops = {"fontsize" : 12},shadow=True)
-    plt.axis('equal') 
-    plt.title("本月收入", {"fontsize" : 18})
-    plt.legend(loc = "best")   
     
-    file_path="/images/"+str(user_id)+"_1.jpg"
-    plt.savefig(file_path,bbox_inches='tight',pad_inches=0.0)     
-    plt.close()
     
-    img_title=user_id+"_income"
-    im=pyimgur.Imgur(CLIENT_ID)
-    upload_image=im.upload_image(file_path,title=img_title)
-    
-    col.update_one({"user_id":user_id}, {"$set":{"img1_name":file_path}})
-    message=ImageSendMessage(original_content_url=upload_image.link)
+    message=TextSendMessage(text=str(money[1]))
     return message      
