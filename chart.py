@@ -15,6 +15,8 @@ from mongodb_function import *
 client = pymongo.MongoClient("mongodb+srv://Teemo:edwardmb0816@accounthelper.ul59p.mongodb.net/test")
 db = client['LineBot_AccountHelper']
 col=db['Images']
+plt.rcParams["font.sans-serif"]=["SimHei"] #设置字体
+plt.rcParams["axes.unicode_minus"]=False #该语句解决图像中的“-”负号的乱码问题
 
 
 def show_income(user_id):
