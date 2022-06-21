@@ -162,6 +162,10 @@ def get_dateData(event):
         global edit_list
         edit_list=read_date(user,date)
         line_bot_api.push_message(user, message)
+        
+
+    
+        
     
     
 
