@@ -12,11 +12,14 @@ CLIENT_ID="690045a99e48e85"
 #=======檔案及套件引入
 import matplotlib.pyplot as plt
 from mongodb_function import *
+import matplotlib.font_manager
 client = pymongo.MongoClient("mongodb+srv://Teemo:edwardmb0816@accounthelper.ul59p.mongodb.net/test")
 db = client['LineBot_AccountHelper']
 col=db['Images']
-plt.rcParams["font.sans-serif"]=["SimHei"] #设置字体
-plt.rcParams["axes.unicode_minus"]=False #该语句解决图像中的“-”负号的乱码问题
+a = sorted([f.name for f in matplotlib.font_manager.fontManager.ttflist]) 
+#檢查字型是否成功安裝 
+plt.rcParams['font.sans-serif'] = ['Taipei Sans TC Beta'] #套用字型
+
 
 
 def show_income(user_id):
