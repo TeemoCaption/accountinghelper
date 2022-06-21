@@ -136,10 +136,10 @@ def handle_message(event):
     elif '修改紀錄' == msg:
         message=select_date()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '圖表統計':
+    elif '圖表統計'==msg:
         message=chart_button()
         line_bot_api.reply_message(event.reply_token,message)
-    elif '本月資產':
+    elif '本月資產'==msg:
         message=find_income()
         line_bot_api.reply_message(event.reply_token,message)
     #elif '功能列表' in msg:
