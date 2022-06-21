@@ -56,7 +56,7 @@ def write_one_data(user,m_class,date,m_type,item,money,keep):
             
     date=str(date).replace('T',' ')
     money=int(money)
-    post={"rid":i,"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep,"img1_name":"","img2_name":""}
+    post={"rid":i,"user_id": user,"class":m_class,"date":date,"type":m_type,"item":item,"money":money,"keep":keep}
     col.insert_one(post)
     
     
