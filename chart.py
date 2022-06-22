@@ -51,7 +51,7 @@ def show_income(user_id):
     plt.title("本月收入", {"fontsize" : 28})
     plt.legend(loc = "best")   
     file_path="./images/"+str(user_id)+"_1.jpg"
-    plt.savefig(file_path, dpi=300, bbox_inches='tight')     
+    plt.savefig(file_path, dpi=100, bbox_inches='tight')     
     plt.close()
     
     img_title=user_id+"_income"
@@ -94,7 +94,7 @@ def show_expenditure(user_id):
     plt.title("本月支出", {"fontsize" : 28})
     plt.legend(loc = "best")   
     file_path="./images/"+str(user_id)+"_2.jpg"
-    plt.savefig(file_path, dpi=300, bbox_inches='tight')     
+    plt.savefig(file_path, dpi=100, bbox_inches='tight')     
     plt.close()
     
     img_title=user_id+"_expenditure"
@@ -145,7 +145,7 @@ def line_chart(user_id):
     plt.legend(loc = "best", fontsize=20)
     
     file_path="./images/"+str(user_id)+"_3.jpg"
-    plt.savefig(file_path, dpi=300, bbox_inches='tight')     
+    plt.savefig(file_path, dpi=100, bbox_inches='tight')     
     plt.close()
     
     
