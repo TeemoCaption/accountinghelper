@@ -208,8 +208,8 @@ def show_record(user,date):
                     "height": "sm",
                     "action": {
                     "type": "postback",
-                    "label": "delete_data",
-                    "data": "r"+str(data[i][0])
+                    "label": "刪除資料",
+                    "data": f"r{data[i][0]}"
                     }
                 }
                 ],

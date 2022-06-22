@@ -158,8 +158,8 @@ def get_dateData(event):
     elif data=="deletedate":
         message=show_record(user,date)
         line_bot_api.push_message(user, message)
-    elif data[0:1] =="r":
-        message=delete_data(user,data[1:])
+    elif str(data)[0:1] =="r":
+        message=delete_data(user,str(data)[1:])
         line_bot_api.push_message(user, message)
         
 
