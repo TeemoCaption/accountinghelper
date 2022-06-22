@@ -123,7 +123,7 @@ def line_chart(user_id):
                 out_money[a]+=datas[i][1]
                 in_money[a]+=0
         elif(str(datas[i][3])[:10] not in date):
-            date.append(datas[i][3])
+            date.append(str(datas[i][3])[:10])
             in_money.append(0)
             out_money.append(0)
             a+=1
