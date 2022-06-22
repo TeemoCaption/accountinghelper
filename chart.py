@@ -142,6 +142,7 @@ def line_chart(user_id):
     plt.yticks(fontsize=16)
     plt.xlabel("日", fontsize=30, labelpad = 15)  # 標示x軸(labelpad代表與圖片的距離)
     plt.ylabel("金額", fontsize=30, labelpad = 20)  # 標示y軸(labelpad代表與圖片的距離)
+    plt.xticks(out_money,date)
     plt.legend(loc = "best", fontsize=20)
     
     file_path="./images/"+str(user_id)+"_3.jpg"
