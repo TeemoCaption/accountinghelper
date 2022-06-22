@@ -146,6 +146,9 @@ def handle_message(event):
     elif '本月支出'==msg:
         message=show_expenditure(event.source.user_id)
         line_bot_api.reply_message(event.reply_token,message)
+    elif '每日收支'==msg:
+        message=line_chart(event.source.user_id)
+        line_bot_api.reply_message(event.reply_token,message)
     #elif '功能列表' in msg:
         #message = function_list()
         #line_bot_api.reply_message(event.reply_token, message)

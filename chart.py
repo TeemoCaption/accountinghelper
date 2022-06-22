@@ -111,28 +111,45 @@ def line_chart():
     datas=everyday()
     date=list()
     data.append(datas[0][3])
-    money=[0 for i in range(len(datas))]
+    in_money=[0 for i in range(len(datas))]
+    out_money=[0 for i in range(len(datas))]
     a=0
     for i in range(len(datas)):
         if(datas[i][3] in date):
-            money[a]=datas[i][1]
+            if(datas[i][0]=="收入"):
+                in_money[a]+=datas[i][1]
+                out_money[a]+=0
+            elif(datas[i][0]=="支出"):
+                out_money[a]+=datas[i][1]
+                in_money[a]+=0
         elif(datas[i][3] not in date):
             date.append(datas[i][3])
             a+=1
-            money[a]=datas[i][1]
+            if(datas[i][0]=="收入"):
+                in_money[a]+=datas[i][1]
+                out_money[a]+=0
+            elif(datas[i][0]=="支出"):
+                out_money[a]+=datas[i][1]
+                in_money[a]+=0
             
-    money_list=list()
-    for i in range(len(money)):
-        if(money[i]==0):
+    money_list1=list()
+    money_list2=list()
+    for i in range(len(in_money)):
+        if(in_money[i]==0):
             break
-        money_list.append(money[i])
+        money_list1.append(in_money[i])
+    for i in range(len(out_money)):
+        if(out_money[i]==0):
+            break
+        money_list2.append(out_money[i])
         
     plt.figure(figsize=(15,10),dpi=300,linewidth = 2)
-    plt.plot(data,money_list,'o-',color = 'g', label="每日收支情況")
+    plt.plot(data,money_list1,'o-',color = 'b', label="收入")
+    plt.plot(data,money_list2,'o-',color = 'r', label="支出")
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
-    plt.xlabel("month", fontsize=30, labelpad = 15)  # 標示x軸(labelpad代表與圖片的距離)
-    plt.ylabel("price", fontsize=30, labelpad = 20)  # 標示y軸(labelpad代表與圖片的距離)
+    plt.xlabel("日", fontsize=30, labelpad = 15)  # 標示x軸(labelpad代表與圖片的距離)
+    plt.ylabel("金額", fontsize=30, labelpad = 20)  # 標示y軸(labelpad代表與圖片的距離)
     plt.legend(loc = "best", fontsize=20)
     
     file_path="./images/"+str(user_id)+"_3.jpg"

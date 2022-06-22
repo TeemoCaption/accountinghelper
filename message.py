@@ -30,7 +30,8 @@ def chart_button():
         quick_reply=QuickReply(
             items=[
                 QuickReplyButton(action=MessageAction(label="本月收入",text="本月收入")),
-                QuickReplyButton(action=MessageAction(label="本月支出",text="本月支出"))
+                QuickReplyButton(action=MessageAction(label="本月支出",text="本月支出")),
+                QuickReplyButton(action=MessageAction(label="每日收支",text="每日收支"))
             ]
         )
     )
