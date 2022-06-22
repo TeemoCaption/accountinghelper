@@ -23,18 +23,28 @@ plt.rcParams['axes.unicode_minus'] = False  # 步驟二（解決座標軸負數�
 
 def show_income(user_id):
     type_list=["銀行卡","生活費","出租","捐贈","股息","退款","薪水","買賣","獎金","優惠券","其他"]
-    explodes=[0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55]
-    datas=find_income(user_id)
+    explodes=[0,0,0,0,0,0,0,0,0,0,0]
+    color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
     money=[0 for i in range(11)]
+    money_list=list()
+    types=list()
+    colors=list()
+    
+    datas=find_income(user_id)
+    
     for i in range(len(datas)):
         for j in range(len(type_list)):
             if(datas[i][0]==type_list[j]):
                 money[j]=datas[i][1]
                 break
-        
+    for i in range(len(money)):
+        if(money[i]!=0):
+            money_list.append(money[i])
+            types.append(type_list[i])
+            colors.append(color[i])
+    
     plt.figure(figsize=(6,9))
-    color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
-    plt.pie(money,explode=explodes,labels=type_list,colors=color,labeldistance=1.2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=1.1)
+    plt.pie(money_list,explode=explodes,labels=types,colors=colors,labeldistance=1.2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=1.1)
     plt.axis('equal') 
     plt.title("本月收入", {"fontsize" : 28})
     plt.legend(loc = "best")   
@@ -54,18 +64,28 @@ def show_income(user_id):
 
 def show_expenditure(user_id):
     type_list=["飲食","日常用品","交通","居家","汽機車","娛樂","醫療保健","教育","稅","電子產品","保險"]
-    explodes=[0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55]
-    datas=find_expenditure(user_id)
+    explodes=[0,0,0,0,0,0,0,0,0,0,0]
+    color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
     money=[0 for i in range(11)]
+    money_list=list()
+    types=list()
+    colors=list()
+    
+    datas=find_expenditure(user_id)
+    
     for i in range(len(datas)):
         for j in range(len(type_list)):
             if(datas[i][0]==type_list[j]):
                 money[j]=datas[i][1]
                 break
-        
+    for i in range(len(money)):
+        if(money[i]!=0):
+            money_list.append(money[i])
+            types.append(type_list[i])
+            colors.append(color[i])
+    
     plt.figure(figsize=(6,9))
-    color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
-    plt.pie(money,explode=explodes,labels=type_list,colors=color,labeldistance=1.2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=1.1)
+    plt.pie(money_list,explode=explodes,labels=types,colors=colors,labeldistance=1.2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=1.1)
     plt.axis('equal') 
     plt.title("本月支出", {"fontsize" : 28})
     plt.legend(loc = "best")   
@@ -73,11 +93,11 @@ def show_expenditure(user_id):
     plt.savefig(file_path, dpi=300, bbox_inches='tight')     
     plt.close()
     
-    img_title=user_id+"_income"
+    img_title=user_id+"_expenditure"
     im=pyimgur.Imgur(CLIENT_ID)
     upload_image=im.upload_image(file_path,title=img_title)
     
     col.update_one({"user_id":user_id}, {"$set":{"img2_name":file_path}})    
     
     message=ImageSendMessage(preview_image_url=upload_image.link,original_content_url=upload_image.link)
-    return message       
+    return message   
