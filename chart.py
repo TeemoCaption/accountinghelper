@@ -140,7 +140,7 @@ def line_chart(user_id):
     plt.plot(date,out_money,'o-',color = 'r', label="支出")
     plt.xticks(fontsize=16)
     plt.yticks(fontsize=16)
-    plt.xlabel("日", fontsize=30, labelpad = 15)  # 標示x軸(labelpad代表與圖片的距離)
+    plt.xlabel("日期", fontsize=30, labelpad = 15)  # 標示x軸(labelpad代表與圖片的距離)
     plt.ylabel("金額", fontsize=30, labelpad = 20)  # 標示y軸(labelpad代表與圖片的距離)
     plt.legend(loc = "best", fontsize=20)
     

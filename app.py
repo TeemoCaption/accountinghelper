@@ -119,23 +119,11 @@ def handle_message(event):
     elif '我要記帳' ==msg:
         message=TextSendMessage(text="https://keepspending.herokuapp.com/")
         line_bot_api.reply_message(event.reply_token, message)
-    elif '最新合作廠商'  == msg:
-        message = imagemap_message()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '最新活動訊息' == msg:
-        message = buttons_message()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '註冊會員' == msg:
-        message = Confirm_Template()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '旋轉木馬' == msg:
-        message = Carousel_Template()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '圖片畫廊' == msg:
-        message = test()
-        line_bot_api.reply_message(event.reply_token, message)
     elif '修改紀錄' == msg:
         message=select_date()
+        line_bot_api.reply_message(event.reply_token, message)
+    elif '刪除紀錄' == msg:
+        message=delete_date()
         line_bot_api.reply_message(event.reply_token, message)
     elif '圖表統計'==msg:
         message=chart_button()
@@ -149,9 +137,6 @@ def handle_message(event):
     elif '每日收支'==msg:
         message=line_chart(event.source.user_id)
         line_bot_api.reply_message(event.reply_token,message)
-    #elif '功能列表' in msg:
-        #message = function_list()
-        #line_bot_api.reply_message(event.reply_token, message)
     else:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
@@ -169,22 +154,15 @@ def get_dateData(event):
         global edit_list
         edit_list=read_date(user,date)
         line_bot_api.push_message(user, message)
+    elif data=="deletedate":
+        message=show_record(user,date)
+        
+    elif data[0:1] =="r":
+        message=delete_data(user,data[1:])
+        line_bot_api.push_message(user, message)
         
 
-    
-        
-    
-    
-
-@handler.add(MemberJoinedEvent)
-def welcome(event):
-    uid = event.joined.members[0].user_id
-    gid = event.source.group_id
-    profile = line_bot_api.get_group_member_profile(gid, uid)
-    name = profile.display_name
-    message = TextSendMessage(text=f'{name}歡迎加入')
-    line_bot_api.reply_message(event.reply_token, message)
-        
+         
         
 import os
 if __name__ == "__main__":

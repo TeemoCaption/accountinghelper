@@ -137,3 +137,8 @@ def everyday(user_id):
     data_sorted=list()
     data_sorted=sorted(data_list,key=lambda s:s[3])
     return data_sorted
+
+def delete_data(user,rid):
+    col.delete_one({"rid":rid})
+    col2.delete_one({"rid":rid})
+    message=TextSendMessage(text="刪除成功!!!")
