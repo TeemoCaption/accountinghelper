@@ -89,6 +89,7 @@ def edit_datas(num):
         #message=str(data)
         message=updateData(num,m_class, date, m_type, item, money, keep)
         line_bot_api.push_message(user_id,TextSendMessage(text=message))
+        user_id=""
     return render_template('./edit_data.html')
 
     
