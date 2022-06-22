@@ -107,8 +107,8 @@ def show_expenditure(user_id):
     return message   
 
 
-def line_chart():
-    datas=everyday()
+def line_chart(user_id):
+    datas=everyday(user_id)
     date=list()
     data.append(datas[0][3])
     in_money=[0 for i in range(len(datas))]
