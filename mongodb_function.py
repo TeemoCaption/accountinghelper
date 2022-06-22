@@ -128,7 +128,7 @@ def find_expenditure(user_id):
         data_list.append([str(data.get('type')),int(data.get('money')),str(data.get('user_id'))])
     return data_list
 
-def everyday():
+def everyday(user_id):
     today=datetime.date.today()
     date=str(today)[:7]
     data_list=[]
