@@ -70,6 +70,7 @@ def show_expenditure(user_id):
     money_list=list()
     types=list()
     colors=list()
+    explode=list()
     
     datas=find_expenditure(user_id)
     
@@ -83,6 +84,7 @@ def show_expenditure(user_id):
             money_list.append(money[i])
             types.append(type_list[i])
             colors.append(color[i])
+            explode.append(0)
     
     plt.figure(figsize=(6,9))
     plt.pie(money_list,explode=explodes,labels=types,colors=colors,labeldistance=1.2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=1.1)
