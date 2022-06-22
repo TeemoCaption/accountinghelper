@@ -140,7 +140,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,message)
     elif "我要刪除編號" in msg:
         message=delete_data(event.source.user_id,str(msg)[8:])
-        line_bot_api.reply_message(user, message)
+        line_bot_api.reply_message(event.source.user_id, message)
     else:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
