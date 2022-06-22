@@ -134,4 +134,6 @@ def everyday():
     data_list=[]
     for data in col.find({'user_id':user_id,"date":{'$regex':".*"+date+".*"}}):
         data_list.append([str(data.get('class')),int(data.get('money')),str(data.get('user_id')),str(data.get('date'))])
-    return data_list
+    data_sorted=list()
+    data_sorted=sorted(data_list,key=lambda s:s[3])
+    return data_sorted

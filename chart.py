@@ -107,4 +107,44 @@ def show_expenditure(user_id):
     return message   
 
 
+def line_chart():
+    datas=everyday()
+    date=list()
+    data.append(datas[0][3])
+    money=[0 for i in range(len(datas))]
+    a=0
+    for i in range(len(datas)):
+        if(datas[i][3] in date):
+            money[a]=datas[i][1]
+        elif(datas[i][3] not in date):
+            date.append(datas[i][3])
+            a+=1
+            money[a]=datas[i][1]
+            
+    money_list=list()
+    for i in range(len(money)):
+        if(money[i]==0):
+            break
+        money_list.append(money[i])
+        
+    plt.figure(figsize=(15,10),dpi=300,linewidth = 2)
+    plt.plot(data,money_list,'o-',color = 'g', label="每日收支情況")
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=20)
+    plt.xlabel("month", fontsize=30, labelpad = 15)  # 標示x軸(labelpad代表與圖片的距離)
+    plt.ylabel("price", fontsize=30, labelpad = 20)  # 標示y軸(labelpad代表與圖片的距離)
+    plt.legend(loc = "best", fontsize=20)
     
+    file_path="./images/"+str(user_id)+"_3.jpg"
+    plt.savefig(file_path, dpi=300, bbox_inches='tight')     
+    plt.close()
+    
+    
+    img_title=user_id+"_everyday"
+    im=pyimgur.Imgur(CLIENT_ID)
+    upload_image=im.upload_image(file_path,title=img_title)
+    
+    col.update_one({"user_id":user_id}, {"$set":{"img3_name":file_path}})    
+    
+    message=ImageSendMessage(preview_image_url=upload_image.link,original_content_url=upload_image.link)
+    return message   
