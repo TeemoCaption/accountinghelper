@@ -107,5 +107,4 @@ def show_expenditure(user_id):
     return message   
 
 
-def line_chart():
     
