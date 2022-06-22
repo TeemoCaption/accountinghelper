@@ -138,7 +138,7 @@ def line_chart(user_id):
     plt.figure(figsize=(20,10),dpi=300,linewidth = 10)
     plt.plot(date,in_money,'o-',color = 'b', label="收入")
     plt.plot(date,out_money,'o-',color = 'r', label="支出")
-    plt.xticks(out_money,date,fontsize=16)
+    plt.xticks(fontsize=16)
     plt.yticks(fontsize=16)
     plt.xlabel("日", fontsize=30, labelpad = 15)  # 標示x軸(labelpad代表與圖片的距離)
     plt.ylabel("金額", fontsize=30, labelpad = 20)  # 標示y軸(labelpad代表與圖片的距離)
