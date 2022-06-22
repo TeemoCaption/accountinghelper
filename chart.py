@@ -49,4 +49,35 @@ def show_income(user_id):
     col.update_one({"user_id":user_id}, {"$set":{"img1_name":file_path}})    
     
     message=ImageSendMessage(preview_image_url=upload_image.link,original_content_url=upload_image.link)
-    return message      
+    return message   
+
+
+def show_expenditure(user_id):
+    type_list=["飲食","日常用品","交通","居家","汽機車","娛樂","醫療保健","教育","稅","電子產品","保險"]
+    explodes=[0,0,0,0,0,0,0,0,0,0,0]
+    datas=find_income(user_id)
+    money=[0 for i in range(11)]
+    for i in range(len(datas)):
+        for j in range(len(type_list)):
+            if(datas[i][0]==type_list[j]):
+                money[j]=datas[i][1]
+                break
+        
+    plt.figure(figsize=(6,9))
+    color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
+    plt.pie(money,explode=explodes,labels=type_list,colors=color,labeldistance=1.1,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=0.6)
+    plt.axis('equal') 
+    plt.title("本月收入", {"fontsize" : 28})
+    plt.legend(loc = "best")   
+    file_path="./images/"+str(user_id)+"_2.jpg"
+    plt.savefig(file_path, dpi=300, bbox_inches='tight')     
+    plt.close()
+    
+    img_title=user_id+"_income"
+    im=pyimgur.Imgur(CLIENT_ID)
+    upload_image=im.upload_image(file_path,title=img_title)
+    
+    col.update_one({"user_id":user_id}, {"$set":{"img1_name":file_path}})    
+    
+    message=ImageSendMessage(preview_image_url=upload_image.link,original_content_url=upload_image.link)
+    return message       
