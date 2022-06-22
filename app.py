@@ -137,7 +137,7 @@ def handle_message(event):
         message=line_chart(event.source.user_id)
         line_bot_api.reply_message(event.reply_token,message)
     elif "d" in msg:
-        message=delete_data(event.source.user_id,str(msg)[8:])
+        message=delete_data(event.source.user_id,msg[1:])
         line_bot_api.reply_message(event.reply_token, message)
     else:
         message = button_reply()
