@@ -23,7 +23,7 @@ plt.rcParams['axes.unicode_minus'] = False  # 步驟二（解決座標軸負數�
 
 def show_income(user_id):
     type_list=["銀行卡","生活費","出租","捐贈","股息","退款","薪水","買賣","獎金","優惠券","其他"]
-    explodes=[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]
+    explodes=[0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55]
     datas=find_income(user_id)
     money=[0 for i in range(11)]
     for i in range(len(datas)):
@@ -54,7 +54,7 @@ def show_income(user_id):
 
 def show_expenditure(user_id):
     type_list=["飲食","日常用品","交通","居家","汽機車","娛樂","醫療保健","教育","稅","電子產品","保險"]
-    explodes=[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]
+    explodes=[0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55]
     datas=find_expenditure(user_id)
     money=[0 for i in range(11)]
     for i in range(len(datas)):
