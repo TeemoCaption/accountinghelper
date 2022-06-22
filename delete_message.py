@@ -208,6 +208,7 @@ def show_record(user,date):
                     "height": "sm",
                     "action": {
                     "type": "postback",
+                    "label": "delete_data",
                     "data": "r"+str(data[i][0])
                     }
                 }
