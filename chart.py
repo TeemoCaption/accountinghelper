@@ -67,7 +67,7 @@ def show_expenditure(user_id):
     color=["#ef233c","#219ebc","#fca311","#2ec4b6","#fcbc00","#ef9cda","#b298dc","#f4d35e","#00c49a","#9381ff","#edf67d"]
     plt.pie(money,explode=explodes,labels=type_list,colors=color,labeldistance=1.1,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=0.6)
     plt.axis('equal') 
-    plt.title("本月收入", {"fontsize" : 28})
+    plt.title("本月支出", {"fontsize" : 28})
     plt.legend(loc = "best")   
     file_path="./images/"+str(user_id)+"_2.jpg"
     plt.savefig(file_path, dpi=300, bbox_inches='tight')     
