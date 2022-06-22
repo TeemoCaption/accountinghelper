@@ -144,8 +144,8 @@ def line_chart(user_id):
         money_list2.append(out_money[i])
         
     plt.figure(figsize=(15,10),dpi=300,linewidth = 2)
-    plt.plot(data,money_list1,'o-',color = 'b', label="收入")
-    plt.plot(data,money_list2,'o-',color = 'r', label="支出")
+    plt.plot(date,money_list1,'o-',color = 'b', label="收入")
+    plt.plot(date,money_list2,'o-',color = 'r', label="支出")
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
     plt.xlabel("日", fontsize=30, labelpad = 15)  # 標示x軸(labelpad代表與圖片的距離)
