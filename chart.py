@@ -55,7 +55,7 @@ def show_income(user_id):
 def show_expenditure(user_id):
     type_list=["飲食","日常用品","交通","居家","汽機車","娛樂","醫療保健","教育","稅","電子產品","保險"]
     explodes=[0,0,0,0,0,0,0,0,0,0,0]
-    datas=find_income(user_id)
+    datas=find_expenditure(user_id)
     money=[0 for i in range(11)]
     for i in range(len(datas)):
         for j in range(len(type_list)):
