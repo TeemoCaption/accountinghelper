@@ -137,7 +137,7 @@ def handle_message(event):
         message=line_chart(event.source.user_id)
         line_bot_api.reply_message(event.reply_token,message)
     elif "我要刪除的是編號" in msg:
-        message=delete_data(event.source.user_id,msg[1:])
+        message=delete_data(event.source.user_id,msg[8:])
         line_bot_api.reply_message(event.reply_token, message)
     else:
         message = button_reply()
