@@ -209,7 +209,7 @@ def show_record(user,date):
                     "action": {
                     "type": "message",
                     "label":"刪除該筆紀錄",
-                    "text": "d"+data[i][0],
+                    "text": "我要刪除的是編號"+data[i][0],
                     }
                 }
                 ],

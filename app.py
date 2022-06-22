@@ -136,7 +136,7 @@ def handle_message(event):
     elif '每日收支'==msg:
         message=line_chart(event.source.user_id)
         line_bot_api.reply_message(event.reply_token,message)
-    elif "d" in msg:
+    elif "我要刪除的是編號" in msg:
         message=delete_data(event.source.user_id,msg[1:])
         line_bot_api.reply_message(event.reply_token, message)
     else:
