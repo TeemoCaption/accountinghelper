@@ -138,6 +138,9 @@ def handle_message(event):
     elif '每日收支'==msg:
         message=line_chart(event.source.user_id)
         line_bot_api.reply_message(event.reply_token,message)
+    elif "我確定要刪除編號"in msg:
+        message=delete_data(user,msg[8:])
+        line_bot_api.push_message(user, message)
     else:
         message = button_reply()
         line_bot_api.reply_message(event.reply_token, message)
@@ -158,9 +161,7 @@ def get_dateData(event):
     elif data=="deletedate":
         message=show_record(user,date)
         line_bot_api.push_message(user, message)
-    elif str(data)[0:1] =="r":
-        message=delete_data(user,str(data)[1:])
-        line_bot_api.push_message(user, message)
+        
         
 
          

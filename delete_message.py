@@ -207,9 +207,8 @@ def show_record(user,date):
                     "style": "link",
                     "height": "sm",
                     "action": {
-                    "type": "postback",
-                    "label": "刪除資料",
-                    "data": f"r{data[i][0]}"
+                    "type": "text",
+                    "text": f"我確定要刪除編號{data[i][0]}",
                     }
                 }
                 ],
