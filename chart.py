@@ -110,7 +110,7 @@ def show_expenditure(user_id):
 def line_chart(user_id):
     datas=everyday(user_id)
     date=list()
-    data.append(datas[0][3])
+    date.append(datas[0][3])
     in_money=[0 for i in range(len(datas))]
     out_money=[0 for i in range(len(datas))]
     a=0
