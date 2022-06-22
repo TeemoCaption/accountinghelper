@@ -110,19 +110,19 @@ def show_expenditure(user_id):
 def line_chart(user_id):
     datas=everyday(user_id)
     date=list()
-    date.append(datas[0][3])
+    date.append(str(datas[0][3])[:10])
     in_money=[0]
     out_money=[0]
     a=0
     for i in range(len(datas)):
-        if(datas[i][3] in date):
+        if(str(datas[i][3])[:10] in date):
             if(datas[i][0]=="收入"):
                 in_money[a]+=datas[i][1]
                 out_money[a]+=0
             elif(datas[i][0]=="支出"):
                 out_money[a]+=datas[i][1]
                 in_money[a]+=0
-        elif(datas[i][3] not in date):
+        elif(str(datas[i][3])[:10] not in date):
             date.append(datas[i][3])
             in_money.append(0)
             out_money.append(0)
