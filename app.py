@@ -19,8 +19,6 @@ from liffpy import (
 
 #======這裡是呼叫的檔案內容=====
 from message import *
-from new import *
-from Function import *
 from mongodb_function import *
 from edit_message import select_date,find_date
 from delete_message import delete_date,show_record
