@@ -111,8 +111,8 @@ def line_chart(user_id):
     datas=everyday(user_id)
     date=list()
     date.append(datas[0][3])
-    in_money=[0 for i in range(len(datas))]
-    out_money=[0 for i in range(len(datas))]
+    in_money=[0]
+    out_money=[0]
     a=0
     for i in range(len(datas)):
         if(datas[i][3] in date):
@@ -124,6 +124,8 @@ def line_chart(user_id):
                 in_money[a]+=0
         elif(datas[i][3] not in date):
             date.append(datas[i][3])
+            in_money.append(0)
+            out_money.append(0)
             a+=1
             if(datas[i][0]=="收入"):
                 in_money[a]+=datas[i][1]
@@ -132,16 +134,6 @@ def line_chart(user_id):
                 out_money[a]+=datas[i][1]
                 in_money[a]+=0
             
-    money_list1=list()
-    money_list2=list()
-    for i in range(len(in_money)):
-        if(in_money[i]==0):
-            break
-        money_list1.append(in_money[i])
-    for i in range(len(out_money)):
-        if(out_money[i]==0):
-            break
-        money_list2.append(out_money[i])
         
     plt.figure(figsize=(15,10),dpi=300,linewidth = 2)
     plt.plot(date,money_list1,'o-',color = 'b', label="收入")
