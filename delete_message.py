@@ -208,6 +208,7 @@ def show_record(user,date):
                     "height": "sm",
                     "action": {
                     "type": "text",
+                    "label":"刪除該筆紀錄",
                     "text": f"我確定要刪除編號{data[i][0]}",
                     }
                 }
