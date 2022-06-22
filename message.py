@@ -14,11 +14,6 @@ def button_reply():
                 QuickReplyButton(action=MessageAction(label="圖表統計",text="圖表統計")),
                 QuickReplyButton(action=MessageAction(label="修改紀錄",text="修改紀錄")),
                 QuickReplyButton(action=MessageAction(label="刪除紀錄",text="刪除紀錄")),
-                QuickReplyButton(action=MessageAction(label="最新合作廠商",text="最新合作廠商")),
-                QuickReplyButton(action=MessageAction(label="最新活動訊息",text="最新活動訊息")),
-                QuickReplyButton(action=MessageAction(label="註冊會員",text="註冊會員")),
-                QuickReplyButton(action=MessageAction(label="旋轉木馬",text="旋轉木馬")),
-                QuickReplyButton(action=MessageAction(label="圖片畫廊",text="圖片畫廊")),
             ]
         )
     )
