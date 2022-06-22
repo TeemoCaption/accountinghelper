@@ -135,7 +135,7 @@ def line_chart(user_id):
                 in_money[a]+=0
             
         
-    plt.figure(figsize=(20,10),dpi=300,linewidth = 2)
+    plt.figure(figsize=(20,10),dpi=300,linewidth = 4)
     plt.plot(date,in_money,'o-',color = 'b', label="收入")
     plt.plot(date,out_money,'o-',color = 'r', label="支出")
     plt.xticks(fontsize=16)
