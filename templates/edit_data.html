@@ -52,7 +52,7 @@
         </div>
         <div class="mb-3">
             <label for="m_type">選擇類別：</label>
-            <select class="form-select" aria-label="Default select example" id="m_type">
+            <select class="form-select" aria-label="Default select example" id="m_type" name="classType">
                 <optgroup label="收入">
                     <option value="銀行卡">銀行卡</option>
                     <option value="生活費">生活費</option>
@@ -97,12 +97,25 @@
     </form>
 </body>
 <script>
-    //==========================LIFF API初始化================================
     $(document).ready(function() {
-        $(document).ready(function() {
-            liff.init({
-                liffId: "1657158455-5JqnB7lj"
-            });
+        $('input[type=radio][name=drone]').change(function() {
+            if (this.value == "收入") {
+                option = ["銀行卡", "生活費", "出租", "捐贈", "股息", "退款", "薪水", "買賣", "獎金", "優惠券", "其他"];
+                optionTags = ''
+                for (var i = 0; i < option.length; i++) {
+                    optionTags += '<option value="' + option[i] + '">' + option[i] + '</option>'
+                }
+                $('#m_type option:gt(0)').remove();
+                $('#m_type option:gt(0)').append(optionTags)
+            } else if (this.value == "支出") {
+                option = ["飲食", "日常用品", "交通", "居家", "汽機車", "娛樂", "醫療保健", "教育", "稅", "電子產品", "保險"];
+                optionTags = ''
+                for (var i = 0; i < option.length; i++) {
+                    optionTags += '<option value="' + option[i] + '">' + option[i] + '</option>'
+                }
+                $('#m_type option:gt(0)').remove();
+                $('#m_type option:gt(0)').append(optionTags)
+            }
         });
     });
     //==========================LIFF API初始化================================
