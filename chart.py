@@ -46,7 +46,7 @@ def show_income(user_id):
             explode.append(0)
     
     plt.figure(figsize=(6,9))
-    plt.pie(money_list,explode=explode,labels=types,colors=colors,labeldistance=1.2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=1.1)
+    plt.pie(money_list,explode=explode,labels=types,colors=colors,labeldistance=1.2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=0.6)
     plt.axis('equal') 
     plt.title("本月收入", {"fontsize" : 28})
     plt.legend(loc = "best")   
@@ -89,7 +89,7 @@ def show_expenditure(user_id):
             explode.append(0)
     
     plt.figure(figsize=(6,9))
-    plt.pie(money_list,explode=explode,labels=types,colors=colors,labeldistance=1.2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=1.1)
+    plt.pie(money_list,explode=explode,labels=types,colors=colors,labeldistance=1.2,autopct = "%2.2f%%",shadow=False,startangle=90,pctdistance=0.6)
     plt.axis('equal') 
     plt.title("本月支出", {"fontsize" : 28})
     plt.legend(loc = "best")   
