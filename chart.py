@@ -7,13 +7,13 @@ line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7Uvg
 #========Imgur Api==============
 import pyimgur
 import requests,json
-CLIENT_ID="690045a99e48e85"
+CLIENT_ID="此處放你的Imgur Api ID"
 
 #=======檔案及套件引入
 import matplotlib.pyplot as plt
 from mongodb_function import *
 from matplotlib.font_manager import FontProperties
-client = pymongo.MongoClient("mongodb+srv://Teemo:edwardmb0816@accounthelper.ul59p.mongodb.net/test")
+client = pymongo.MongoClient("此處放你的資料庫連線")
 db = client['LineBot_AccountHelper']
 col=db['Images']
 plt.rcParams['font.sans-serif'] = ['SimHei'] # 步驟一（替換sans-serif字型）

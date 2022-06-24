@@ -30,20 +30,20 @@ import tempfile, os
 import datetime
 import time
 #======python的函數庫==========
-client = pymongo.MongoClient("mongodb+srv://Teemo:edwardmb0816@accounthelper.ul59p.mongodb.net/test")
+client = pymongo.MongoClient("此處放你的資料庫連線")
 col = db['AccountHelper']
 
 
 app = Flask(__name__,template_folder='templates')
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 # Channel Access Token
-line_bot_api = LineBotApi('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('此處放你的Channel access token')
 # Channel Secret
-handler = WebhookHandler('a8ce48921e34d218c60bcbaf3cca1861')
+handler = WebhookHandler('此處放你的Channel secret ')
 
 
 #============LIFF API=================
-liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
+liff_api = LIFF('此處放你的Channel access token')
 user_id=""
 edit_list=""
 

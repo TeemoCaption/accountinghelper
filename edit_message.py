@@ -11,7 +11,7 @@ from liffpy import (
 from mongodb_function import *
 from collections import defaultdict
 #========LIFF API========
-liff_api = LIFF('Tnn7ruaJTFJSF065VRDLe7T5DqGpzXLKHlKdISIRzr3A1qyjB7UvgPve40QMHmWlPvDvvXFuoeyodR6wmn6fwIciyBL7uBDAsd2NjdjbuLVFSRO2oDjms4imFs8jz+PShjzYojdlWOd0eL8Z9SMyEAdB04t89/1O/w1cDnyilFU=')
+liff_api = LIFF('此處放你的Channel access token')
 liff_id="https://liff.line.me/1657158455-D64JZxmQ"
 
 
